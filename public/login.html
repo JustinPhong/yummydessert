@@ -112,47 +112,24 @@
                 const auth = getAuth(app);
 
                 document.getElementById("login").addEventListener('click', function(e) {
-    e.preventDefault(); 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        sessionStorage.setItem("login", "yes");
-
-        // Retrieve additional user data from Firestore based on email
-        const userEmail = user.email;
-        const usersRef = collection(db, 'users/'); // Replace 'users' with your Firestore collection name
-
-        // Query Firestore to find data based on the signed-in user's email
-        const query = query(usersRef, where('email', '==', userEmail));
-
-        getDocs(query)
-        .then((querySnapshot) => {
-            if (!querySnapshot.empty) {
-                querySnapshot.forEach((doc) => {
-                    const userData = doc.data();
-                    // Access user data here
-                    console.log("User Data:", userData);
-                });
-            } else {
-                console.log("No user data found.");
-            }
-        })
-        .catch((error) => {
-            console.error("Error retrieving user data:", error);
-        });
-
-
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        window.alert(errorMessage);
-    });
-});
+                    e.preventDefault(); 
+                    const email = document.getElementById("email").value;
+                    const password = document.getElementById("password").value;
+                    signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        // Signed in 
+                        const user = userCredential.user;
+                        sessionStorage.setItem("login","yes");
+                        setTimeout(function() {
+                                    window.location.href = "index.html";
+                                }, 100); 
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        window.alert(errorMessage);
+                    });
+                })
             </script>
     </body>
 </html>

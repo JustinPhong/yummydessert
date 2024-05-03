@@ -192,7 +192,7 @@
 // Function to display user information based on userID
 onload = function displayUserInfo() {
         var user = auth.currentUser;
-        const userRef = ref(db, `users/`+ user.uid); // Construct reference to user data in Firestore
+        const userRef = ref(db, 'users/' + user.uid); // Construct reference to user data in Firestore
 
     // Retrieve user data from Firestore
     get(userRef).then((snapshot) => {

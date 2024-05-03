@@ -111,25 +111,36 @@
                 const app = initializeApp(firebaseConfig);
                 const auth = getAuth(app);
 
-                document.getElementById("login").addEventListener('click', function(e) {
-                    e.preventDefault(); 
-                    const email = document.getElementById("email").value;
-                    const password = document.getElementById("password").value;
-                    signInWithEmailAndPassword(auth, email, password)
-                    .then((userCredential) => {
-                        // Signed in 
-                        const user = userCredential.user;
-                        sessionStorage.setItem("login","yes");
-                        setTimeout(function() {
-                                    window.location.href = "index.html";
-                                }, 100); 
-                    })
-                    .catch((error) => {
-                        const errorCode = error.code;
-                        const errorMessage = error.message;
-                        window.alert(errorMessage);
-                    });
-                })
+// Event listener for login button
+document.getElementById("login").addEventListener('click', function(e) {
+    e.preventDefault(); 
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    // Authenticate user using Firebase Authentication
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+        // Signed in successfully
+        const user = userCredential.user; // Get the authenticated user object
+
+        // Set login status in sessionStorage
+        sessionStorage.setItem("login", "yes");
+
+        // Redirect to index.html after a short delay
+        setTimeout(function() {
+            window.location.href = "index.html";
+        }, 100); 
+
+        // Call function to display user information on account page
+        displayUserInfo(user.uid); // Pass the user's UID to retrieve user data
+    })
+    .catch((error) => {
+        // Handle sign-in errors
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        window.alert(errorMessage);
+    });
+});
             </script>
     </body>
 </html>

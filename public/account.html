@@ -184,8 +184,9 @@
                 measurementId: "G-HY8X68GH3R"
                 };
 
-                // Assuming you have initialized Firebase app and imported necessary Firebase modules (auth, firestore)
-                const auth = getAuth();
+                // Assuming you have initialized Firebase app and imported necessary Firebase modules (auth, firestore
+                const app = initializeApp(firebaseConfig);
+                const auth = getAuth(app);
                 const db = getDatabase();
 
                 // Function to retrieve and display user information

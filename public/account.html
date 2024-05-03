@@ -190,7 +190,7 @@
                 const db = getDatabase();
 
 // Function to display user information based on userID
-function displayUserInfo(userId) {
+onload = function displayUserInfo(userId) {
     const userRef = ref(db, `users/${userId}`); // Construct reference to user data in Firestore
 
     // Retrieve user data from Firestore

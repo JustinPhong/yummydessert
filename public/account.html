@@ -166,6 +166,8 @@
                 // Import the functions you need from the SDKs you need
                 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
                 import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+                import { getAuth } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+
 
                 // Your web app's Firebase configuration
                 const firebaseConfig = {
@@ -180,25 +182,15 @@
                 };
 
                 const db = getDatabase();
-                const email = sessionStorage.getItem("email");
+                const auth = getAuth();
                 const starCountRef = ref(db, 'user/' + email);
-                onValue(starCountRef, (snapshot) => {
-                const data = snapshot.val();
-                updateStarCount(postElement, data);
+                const userId = auth.currentUser.uid;
+                return onValue(ref(db, '/users/' + userId), (snapshot) => {
+                const username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+                document.getElementById("username").Value = username;
+                }, {
+                onlyOnce: true
                 });
-
-            window.onload = function(){
-                    const username = document.getElementById("usernmae");
-                    const name = document.getElementById("name");
-                    const email = document.getElementById("email");
-                    const birthday = document.getElementById("birthday");
-                    const contact = document.getElementById("contact");
-                    name.value = sessionStorage.getItem("name");
-                    username.value = sessionStorage.getItem("username");
-                    email.value = sessionStorage.getItem("email");
-                    birthday.value = sessionStorage.getItem("birthday");
-                    contact.value = sessionStorage.getItem("contact");
-                }
 
         </script>
     </body>

@@ -180,7 +180,8 @@
                 };
 
                 const db = getDatabase();
-                const starCountRef = ref(db, 'posts/' + postId + '/starCount');
+                const email = sessionStorage.getItem("email");
+                const starCountRef = ref(db, 'user/' + email);
                 onValue(starCountRef, (snapshot) => {
                 const data = snapshot.val();
                 updateStarCount(postElement, data);

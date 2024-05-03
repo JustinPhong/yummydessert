@@ -121,7 +121,7 @@ document.getElementById("login").addEventListener('click', function(e) {
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         // Signed in successfully
-        const user = userCredential.user; // Get the authenticated user object
+        const user = auth.currentUser; // Get the authenticated user object
 
         // Set login status in sessionStorage
         sessionStorage.setItem("login", "yes");

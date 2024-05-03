@@ -18,13 +18,13 @@
         <div class="navi-b">
             <div class="navi">
                 <div class="column">
-                    <img src="/image/logo.png" class="icon" alt="Home">
+                    <img src="image/logo.png?raw=true" class="icon" alt="Home">
                 </div>
                 <div class="navi-tb">
-                    <a class="navi-t" href="/index.html">Home</a>
-                    <a class="navi-t" href="/rewards.html">Rewards</a>
-                    <a class="navi-t" href="/order.html">Order</a>
-                    <a class="navi-t" href="/account.html">Account</a>
+                    <a class="navi-t" href="index.html">Home</a>
+                    <a class="navi-t" href="rewards.html">Rewards</a>
+                    <a class="navi-t" href="order.html">Order</a>
+                    <a class="navi-t" onclick="account()" style="cursor: pointer;">Account</a>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
                     <a class="lable">Password</a>
                     <input id="password" type="password" placeholder="Password"></input>
                 </div>
-                <input type="submit" class="signupbutton" value="Login Now"></input>
+                <input type="submit" class="signupbutton" value="Login Now" id="login"></input>
             </div>
         </div>
 
@@ -60,22 +60,69 @@
                     <p>lee@gmail.com</p>
                 </div>
                 <div class="conbutton">
-                    <div class="Frectangle" onclick="window.location.href='/order.html'">
+                    <div class="Frectangle" onclick="window.location.href='order.html'">
                         <p>Order Now</p>
                     </div>
                     <div class="Frectangle1" onclick="window.location.href='weixin://dl/chat?S13798246'">
-                        <img src="/image/wechat.png" class="Ficon"><p class="FBT">Wechat</p>
+                        <img src="image/wechat.png?raw=true" class="Ficon"><p class="FBT">Wechat</p>
                     </div>
                     <div class="Frectangle2" onclick="window.location.href='https://t.me/+GZrY4rbGtQ1kNzk1'">
-                        <img src="/image/telegram.png" class="Ficon"><p class="FBT">Telegram</p>
+                        <img src="image/telegram.png?raw=true" class="Ficon"><p class="FBT">Telegram</p>
                     </div>
                     <div class="copyright">© Lee and Phong Copyright 2024</div>
                 </div>
                 <div class="Fmap">
-                    <img src="/image/map.png" class="Fmapi" onclick="window.location.href='https://maps.app.goo.gl/xNfV9CApXb4VZnvW9'">
+                    <img src="image/map.png?raw=true" class="Fmapi" onclick="window.location.href='https://maps.app.goo.gl/xNfV9CApXb4VZnvW9'">
                     <p class="FmapT">Cafe Inasis TNB @ UUM</p>
                 </div>
             </div>
         </div>
+
+        <script>
+            function account(){
+                if (sessionStorage.getItem("login") === "yes" ){
+                    window.location.href="account.html"
+                }
+                else {
+                    window.location.href="login.html"
+                }};
+        </script>
+
+            <script type="module">
+                // Import the functions you need from the SDKs you need
+                import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+                import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+
+
+                // Your web app's Firebase configuration
+                const firebaseConfig = {
+                apiKey: "AIzaSyACZZIyq7T1sU3TtvFJI5FKkAXPYZ4yf8I",
+                authDomain: "finalproject-8f27c.firebaseapp.com",
+                databaseURL: "https://finalproject-8f27c-default-rtdb.asia-southeast1.firebasedatabase.app",
+                projectId: "finalproject-8f27c",
+                storageBucket: "finalproject-8f27c.appspot.com",
+                messagingSenderId: "644459011945",
+                appId: "1:644459011945:web:6d4a2d7d2fe00c53a027f8",
+                measurementId: "G-HY8X68GH3R"
+                };
+
+                const app = initializeApp(firebaseConfig);
+                const auth = getAuth(app);
+
+                document.getElementById("login").addEventListener('click', function(e) {
+                    e.preventDefault(); 
+                    signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        // Signed in 
+                        const user = userCredential.user;
+                        window.location.href = "account.html";
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        alert.message(errorMessage);
+                    });
+                })
+            </script>
     </body>
 </html>

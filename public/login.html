@@ -120,6 +120,8 @@ document.getElementById("login").addEventListener('click', function(e) {
     // Authenticate user using Firebase Authentication
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
+        var user = auth.currentUser;
+        displayUserInfo(user.uid)
         sessionStorage.setItem("login", "yes");
         setTimeout(function() {
             window.location.href = "index.html";

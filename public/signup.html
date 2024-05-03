@@ -121,31 +121,28 @@
             // Initialize Firebase
             const app = initializeApp(firebaseConfig);
             const auth = getAuth(app);
+            const db = getDatabase();
 
             document.getElementById("submit").addEventListener('click', function(e){
                 e.preventDefault();
 
                 const email = document.getElementById("email").value;
                 const password = document.getElementById("password").value;
-                var user = userCredential.user;
-
-                const db = getDatabase();
-
-                set(ref(db, 'users/' + user.uid), {
+                
+                createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed up 
+                    const user = auth.currentUser;
+                    set(ref(db, 'users/' + user.uid), {
                     username: document.getElementById("username").value,
                     name: document.getElementById("name").value,
                     email: document.getElementById("email").value,
                     contact: document.getElementById("contact").value,
                     birthday: document.getElementById("birthday").value
-                });
-                
-                
-                createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    // Signed up 
-                    const user = userCredential.user;
-                    window.alert("Signup successfully")
-                    window.location.href = "login.html";
+                    });
+                    setTimeout(function() {
+                        window.location.href = "login.html";
+                    }, 100); 
                 })
                 .catch((error) => {
                     const errorCode = error.code;

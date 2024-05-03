@@ -18,10 +18,10 @@
         <div class="manCont">
         <div class="manCon">
             <div class="manX">
-                <img src="/image/X.png" class="manX">
+                <img src="image/X.png?raw=true" class="manX">
             </div>
-                <div class="man" onclick="window.location.href='/game.php'">
-                    <img src="/image/man.gif" class="man">
+                <div class="man" onclick="window.location.href='/game.html'">
+                    <img src="image/man.gif?raw=true" class="man">
                 </div>
             </div>
         </div>
@@ -30,13 +30,13 @@
         <div class="navi-b">
             <div class="navi">
                 <div class="column">
-                    <img src="/image/logo.png" class="icon" alt="Home">
+                    <img src="image/logo.png?raw=true" class="icon" alt="Home">
                 </div>
                 <div class="navi-tb">
-                    <a class="navi-t" href="/index.php">Home</a>
-                    <a class="navi-t" href="/rewards.php">Rewards</a>
-                    <a class="navi-t" href="/order.php">Order</a>
-                    <a class="navi-t" href="/account.php">Account</a>
+                    <a class="navi-t" href="index.html">Home</a>
+                    <a class="navi-t" href="rewards.html">Rewards</a>
+                    <a class="navi-t" href="order.html">Order</a>
+                    <a class="navi-t" href="account.html">Account</a>
                 </div>
             </div>
         </div>
@@ -45,23 +45,23 @@
         <div class="container">
             <div class="consize">
                 <div class="leftcon">
-                    <img src="/image/account.png" class="accimg">
-                    <a href="/account.php">
+                    <img src="image/account.png?raw=true" class="accimg">
+                    <a href="account.html">
                         <div class="buttonbar">
-                            <img src="/image/accountbutton.png" class="buttonimg">
-                            <a class="leftbutton" href="/account.php">My Profile</a>
+                            <img src="image/accountbutton.png?raw=true" class="buttonimg">
+                            <a class="leftbutton" href="account.html">My Profile</a>
                         </div>
                     </a>
-                    <a href="/purchase.php">
+                    <a href="purchase.html">
                     <div class="buttonbar">
-                        <img src="/image/purchasebutton.png" class="buttonimg">
-                        <a class="leftbutton" href="/purchase.php">My Purchase</a>
+                        <img src="image/purchasebutton.png?raw=true" class="buttonimg">
+                        <a class="leftbutton" href="purchase.html">My Purchase</a>
                     </div>
                     </a>
                     <a href="logout">
                         <div class="buttonbar">
-                            <img src="/image/logoutbutton.png" class="buttonimg">
-                            <a class="leftbutton" href="signup.php">Logout</a>
+                            <img src="image/logoutbutton.png?raw=true" class="buttonimg">
+                            <a class="leftbutton" onclick="signout1()">Logout</a>
                         </div>
                     </a>
                 </div>
@@ -136,22 +136,47 @@
                     <p>lee@gmail.com</p>
                 </div>
                 <div class="conbutton">
-                    <div class="Frectangle" onclick="window.location.href='/order.php'">
+                    <div class="Frectangle" onclick="window.location.href='order.html'">
                         <p>Order Now</p>
                     </div>
                     <div class="Frectangle1" onclick="window.location.href='weixin://dl/chat?S13798246'">
-                        <img src="/image/wechat.png" class="Ficon"><p class="FBT">Wechat</p>
+                        <img src="image/wechat.png?raw=true" class="Ficon"><p class="FBT">Wechat</p>
                     </div>
                     <div class="Frectangle2" onclick="window.location.href='https://t.me/+GZrY4rbGtQ1kNzk1'">
-                        <img src="/image/telegram.png" class="Ficon"><p class="FBT">Telegram</p>
+                        <img src="image/telegram.png?raw=true" class="Ficon"><p class="FBT">Telegram</p>
                     </div>
                     <div class="copyright">© Lee and Phong Copyright 2024</div>
                 </div>
                 <div class="Fmap">
-                    <img src="/image/map.png" class="Fmapi" onclick="window.location.href='https://maps.app.goo.gl/xNfV9CApXb4VZnvW9'">
+                    <img src="image/map.png?raw=true" class="Fmapi" onclick="window.location.href='https://maps.app.goo.gl/xNfV9CApXb4VZnvW9'">
                     <p class="FmapT">Cafe Inasis TNB @ UUM</p>
                 </div>
             </div>
         </div>
+        <script>
+            function signout1() {
+                // Perform actions to sign out the user
+                // For example, clear session storage or perform any necessary cleanup
+                sessionStorage.removeItem("login"); // Remove the login status from session storage
+
+                // Redirect the user to the login page after signing out
+                window.location.href = "login.html";
+            }
+
+
+            window.onload = function(){
+                    const username = document.getElementById("usernmae");
+                    const name = document.getElementById("name");
+                    const email = document.getElementById("email");
+                    const birthday = document.getElementById("birthday");
+                    const contact = document.getElementById("contact");
+                    name.value = sessionStorage.getItem("name");
+                    username.value = sessionStorage.getItem("username");
+                    email.value = sessionStorage.getItem("email");
+                    birthday.value = sessionStorage.getItem("birthday");
+                    contact.value = sessionStorage.getItem("contact");
+                }
+
+        </script>
     </body>
 </html>

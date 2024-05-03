@@ -104,6 +104,7 @@
             // Import the functions you need from the SDKs you needhttps://www.gstatic.com/firebasejs/10.11.1/firebase-app.js
             import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
             import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+            import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
 
             // Your web app's Firebase configuration
             const firebaseConfig = {
@@ -126,6 +127,22 @@
 
                 const email = document.getElementById("email").value;
                 const password = document.getElementById("password").value;
+                const username = document.getElementById("username").value;
+                const name = document.getElementById("name").value;
+                const birthday = document.getElementById("birthday").value;
+                const contact = document.getElementById("contact").value;
+
+                function writeUserData(username, name, email, birthday, contact) {
+                const db = getDatabase();
+
+                set(ref(db, 'users/' + username), {
+                    username: name,
+                    email: email,
+                    name : name,
+                    birthday: birthday,
+                    contact: contact
+                });
+                }
                 
                 createUserWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {

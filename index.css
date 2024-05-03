@@ -1,0 +1,411 @@
+html,body
+{
+    width: 100%;
+    height: 100%;
+    min-width: 26cm;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+.icon {
+    max-height: 100px;
+    margin-left: 10px;
+    margin-top: 10px; 
+}
+
+.navi-tb {
+    display: inline-flex;
+    margin-right: 30px;
+    margin-top: 30px; 
+    height: 20px;
+    
+}
+
+.navi-t {
+    margin-left: 60px;
+    font-family: "Inter";
+    font-weight: 300;
+}
+
+.navi-b {
+    background-color: #FF9BA2;
+    height: 450px;
+    width: 100%;
+    margin-left: 0;
+}
+
+.navi {
+    display: flex;
+    padding-right: 50px;
+    justify-content: space-between;
+
+}
+
+.banner {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+}
+
+.bannerP {
+    width:100%;
+    min-width: 400px;
+    max-width: 500px;
+}
+
+.bannerT {
+    padding-top: 50px;
+    font-family: "Luckiest Guy", cursive;
+    color: #B11722;
+    font-size: 50px;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 0px;
+}
+
+.manCont {
+    position: absolute;
+    right: 40px;
+    bottom: 30px;
+    z-index: 2;
+}
+
+.manCon {
+    display: block;
+}
+
+.manX {
+    float: right;
+    width: 15px;
+    padding-bottom: 4px;
+}
+
+.man {
+    width: 50px;
+    padding-right: 10px;
+}
+
+.order {
+    padding-top: 200px;
+    padding-bottom: 100px;
+    justify-content: center;
+    margin-left: 60px;
+    margin-right: 20px;
+    height: auto;
+}
+
+.orderP {
+    height: auto;
+    width: 400px;
+}
+
+.rectangle {
+    margin: auto;
+    height: 200px;
+    min-width: 750px;
+    max-width: 970px;
+    background-color: #D9D9D9;
+    border-radius: 15px;
+}
+
+.card1Con {
+    display: flex;
+    gap: 30px;
+    margin-left: -60px;
+    height: auto;
+}
+
+
+.footer {
+    background-color: #2D2D2D;
+    height: 300px;
+}
+
+.Fcont {
+    display: flex;
+    justify-content: center;
+    gap: 90px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.Fcontact {
+    margin-top: 50px;
+    font-family: "Inter";
+    font-style: normal;
+    color: #ffffff;
+    line-height: 2px;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.Frectangle {
+    height: 36px;
+    width: 290px;
+    background-color: #8D8D8D;
+    color: #ffffff;
+    font-family: "Inter";
+    font-weight: 300;
+    font-size: 12px;
+    text-align: center;
+    line-height:35px;
+    margin-bottom: 30px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.Frectangle1 {
+    height: 36px;
+    width: 290px;
+    display: flex;
+    border-radius: 3px;
+    background-color: #00CC00;
+    margin-bottom: 30px;
+    cursor: pointer;
+    
+}
+.Frectangle2 {
+    height: 36px;
+    width: 290px;
+    background-color: #20A9DC;
+    display: flex;
+    border-radius: 3px;
+    margin-bottom: 60px;
+    cursor: pointer;
+}
+
+.FBT {
+    color: #ffffff;
+    font-family: "Inter";
+    font-weight: 300;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.Ficon {
+    margin-left: 100px;
+    margin-top: 7px;
+    height: 22px;
+    width: 22px;    
+}
+
+.conbutton {
+    margin-top: 30px;
+}
+
+.Fmap {
+    margin-top: 30px;
+    width: 250px;
+}
+
+.Fmapi {
+    margin-top: 30px;
+    width: 250px;
+    cursor: pointer;
+}
+
+.FmapT {
+    color: #ffffff;
+    text-align: center;
+    font-family: "Inter";
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.copyright {
+    text-align: center;
+    color: #ffffff;
+    font-family: "Inter";
+    font-weight: 300;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.Card1T1 {
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 38px;
+    margin-bottom: -10px;
+}
+
+.card1Con1 {
+    margin-top: -20px;
+    margin-right: 9px;
+}
+
+.Card1T2 {
+    font-family: "Inter";
+    font-weight: 300;
+    font-size: 15px;
+    margin-bottom: 28px;
+    line-height: 18px;
+    letter-spacing: 0.2px;
+    text-align: justify;
+    min-width: 300px;
+}
+
+.card1button {
+    display: inline-block;
+    background-color: #FF9BA2;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: #ffffff;
+    font-family: "Inter";
+    font-weight: 300;
+    font-size: 12px;
+    text-decoration: none;
+    box-shadow: 1px 3px 5px -1px #8D8D8D;
+    transition: background-color 0.3s;
+
+}
+
+.card1button:hover {
+    background-color: #FF7F8D;
+}
+
+.contentbackground {
+    background-color: #FFE7E9;
+    height: 2000px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.ccard2 {
+    justify-content: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.card2 {
+    margin: auto;
+    min-width: 750px;
+    max-width: 1000px;
+    background-color: #ffffff;
+    justify-content: space-between;
+    display: flex;
+    
+}
+
+.cardCon1 {
+    margin-left: 80px;
+    padding-top: 2px;
+    padding-bottom: 40px;
+}
+
+.c2body {
+    color: #000000;
+    font-family: "Inter";
+    font-weight: 350;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.c2header {
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 38px;
+    margin-bottom: -10px;
+}
+
+.card2i {
+    display: flex;
+    width: 350px;
+    margin-right: 80px;
+    margin-top: 70px;
+}
+
+.card3 {
+    padding-top: 100px;
+    padding-bottom: 200px;
+    justify-content: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.card3Con {
+    display: flex;
+    gap: 30px;
+}
+
+.card3Con1 {
+    margin-top: -20px;
+    margin-left: 40px;
+}
+
+.card3i {
+    margin-top: -15px;
+    height: 100%;
+    width: 8cm;
+    margin-right: 20px;
+}
+
+.rectangle3 {
+    margin: auto;
+    height: 200px;
+    min-width: 750px;
+    max-width: 1000px;
+    background-color: #D9D9D9;
+    border-radius: 15px;
+}
+
+.Card3T2 {
+    font-family: "Inter";
+    font-weight: 300;
+    font-size: 15px;
+    margin-bottom: 19px;
+    line-height: 18px;
+    letter-spacing: 0.2px;
+    text-align: justify;
+    min-width: 300px;
+}
+
+.card4 {
+    margin: auto;
+    min-width: 750px;
+    max-width: 1000px;
+    background-color: #ffffff;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+    margin-top: -2cm;
+}
+
+.imagerow {
+    display: block;
+    width: 16.5cm;
+}
+
+.card4con {
+    display: flex;
+    justify-content: space-between;
+}
+
+.gallery {
+    height: 3cm;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+.c4header {
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 38px;
+}
+
+.card4h {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit
+}

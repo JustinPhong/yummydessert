@@ -1,0 +1,275 @@
+html,body
+{
+    width: 100%;
+    height: 100%;
+    min-width: 26cm;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+a {
+    text-decoration: none;
+    color: inherit
+}
+
+/*footer*/
+.footer {
+    background-color: #2D2D2D;
+    height: 300px;
+}
+
+.Fcont {
+    display: flex;
+    justify-content: center;
+    gap: 90px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.Fcontact {
+    margin-top: 50px;
+    font-family: "Inter";
+    font-style: normal;
+    color: #ffffff;
+    line-height: 2px;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.Frectangle {
+    height: 36px;
+    width: 290px;
+    background-color: #8D8D8D;
+    color: #ffffff;
+    font-family: "Inter";
+    font-weight: 300;
+    font-size: 12px;
+    text-align: center;
+    line-height:35px;
+    margin-bottom: 30px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.Frectangle1 {
+    height: 36px;
+    width: 290px;
+    display: flex;
+    border-radius: 3px;
+    background-color: #00CC00;
+    margin-bottom: 30px;
+    cursor: pointer;
+    
+}
+.Frectangle2 {
+    height: 36px;
+    width: 290px;
+    background-color: #20A9DC;
+    display: flex;
+    border-radius: 3px;
+    margin-bottom: 60px;
+    cursor: pointer;
+}
+
+.FBT {
+    color: #ffffff;
+    font-family: "Inter";
+    font-weight: 300;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.Ficon {
+    margin-left: 100px;
+    margin-top: 7px;
+    height: 22px;
+    width: 22px;    
+}
+
+.conbutton {
+    margin-top: 30px;
+}
+
+.Fmap {
+    margin-top: 30px;
+    width: 250px;
+}
+
+.Fmapi {
+    margin-top: 30px;
+    width: 250px;
+    cursor: pointer;
+}
+
+.FmapT {
+    color: #ffffff;
+    text-align: center;
+    font-family: "Inter";
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.copyright {
+    text-align: center;
+    color: #ffffff;
+    font-family: "Inter";
+    font-weight: 300;
+    font-size: 12px;
+    margin-top: 10px;
+}
+/*footer*/
+
+/*smallman*/
+.manCont {
+    position: absolute;
+    right: 40px;
+    bottom: 30px;
+    z-index: 2;
+}
+
+.manCon {
+    display: block;
+}
+
+.manX {
+    float: right;
+    width: 15px;
+    padding-bottom: 4px;
+}
+
+.man {
+    width: 50px;
+    padding-right: 10px;
+}
+/*smallman*/
+
+/*navigation*/
+.icon {
+    max-height: 100px;
+    margin-left: 10px;
+    margin-top: 10px; 
+}
+
+.navi-tb {
+    display: inline-flex;
+    margin-right: 30px;
+    margin-top: 30px; 
+    height: 20px;
+    
+}
+
+.navi-t {
+    margin-left: 60px;
+    font-family: "Inter";
+    font-weight: 300;
+}
+
+.navi-b {
+    background-color: #FF9BA2;
+    height: 90px;
+    width: 100%;
+    margin-left: 0;
+}
+
+.navi {
+    display: flex;
+    padding-right: 50px;
+    justify-content: space-between;
+}
+/*navigation*/
+
+
+/*content*/
+
+.container {
+    display: flex;
+    justify-content:space-between;
+    margin-top: 1.5cm;
+    margin-bottom: 2cm;
+}
+
+.accimg {
+    width: 4cm;
+    background-color: #8D8D8D;
+    margin-bottom: 20px;
+}
+
+.leftcon {
+    display: flex;
+    flex-direction: column;
+    font-family: "Inter";
+    font-size: 15px;
+    margin-left: 2cm;
+}
+
+.buttonimg {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.buttonbar {
+    display: flex;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.rightcon {
+    flex: 1;
+    min-width: 15cm;
+    display: flex;
+    flex-direction: column;
+    background-color:#D9D9D9;
+    margin-right: 4cm;
+}
+
+.line {
+    height: 1px;
+    width: auto;
+    background-color: #000000;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.txt {
+    font-family: "Inter";
+    font-size: 15px;
+    margin-bottom: 10px;
+    margin-left: 25px;
+}
+
+.consize {
+    width: 8cm;
+}
+
+.contentcon {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputc {
+    width: 10cm;
+}
+
+input {
+    border: #ffffff;
+    height: 1cm;
+    padding: 0px 10px 0px 10px;
+    margin: 0px 10px 0px 10px;
+}
+
+table, td {
+    border-collapse: separate;
+    border-spacing: 3px;
+}
+
+.submitbutton {
+    margin-top: 20px;
+    width: 3cm;
+    border-radius: 6px;
+    background-color: #FF9BA2;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 20px;
+}

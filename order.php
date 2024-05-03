@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <header>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="order.css">
+        <title>Yummy Fresh Online</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+    </header>
+
+    <body style="overflow-x:scroll">
+
+    <div class="orderinterface">
+        <div class="card">
+            <div onclick="closeinterface()" style="cursor:pointer">
+                <a class="dot">X</a>
+            </div>
+            <div class="cardcontent">
+            <img src="/image/maindishes/4.JPG" class="menuimage" id="image">
+            <a style="font-weight:bold; margin: 10px 0px 2px;" id="name">3 Bases Special</a>
+            <a style="margin-bottom: 10px;" id="price">RM 4.00</a>
+            <div style="display: flex;justify-content:space-between;background-color:#D9D9D9;padding:10px 10px;margin-bottom:20px">
+                <div>
+                    <a style="background-color:#ffffff; padding:5px;cursor:pointer;user-select: none;" id="add" onclick="reduce()">-</a>
+                </div>
+                <a id="count">
+                    1
+                </a>
+                <div>
+                    <a style="background-color:#ffffff; padding:5px;cursor:pointer;user-select: none;" id="reduce" onclick="add()">+</a>
+                </div>
+            </div>
+                <div style="color:#ffffff;background-color:#FF9BA2;display:flex;justify-content:center;align-items:center;height:1cm;border-radius:5px;cursor:pointer" onclick="addtocart()">Add To Cart</div>
+            </div>
+        </div>
+    </div>
+
+        <!--small man-->
+        <div class="manCont">
+        <div class="manCon">
+            <div class="manX">
+                <img src="/image/X.png" class="manX">
+            </div>
+                <div class="man">
+                    <img src="/image/man.gif" class="man">
+                </div>
+            </div>
+        </div>
+
+        <!--navigation-->
+        <div class="navi-b">
+            <div class="navi">
+                <div class="column">
+                    <img src="/image/logo.png" class="icon" alt="Home">
+                </div>
+                <div class="navi-tb">
+                    <a class="navi-t" href="/index.php">Home</a>
+                    <a class="navi-t" href="/rewards.php">Rewards</a>
+                    <a class="navi-t" href="/order.php">Order</a>
+                    <a class="navi-t" href="/account.php">Account</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="orderbar-background">
+            <img src="/image/orderbar.png" class="orderbar">
+        </div>
+
+        <!--body-->
+        <div class="bodycon">
+            <div class="leftbody">
+                <!--menubar-->
+                <div class="menubar">
+                    <div class="menubarb" href="#maindishes"></div>
+                    <a class="menubart" href="#maindishes">Main Dishes</a>
+                    <div class="menubarb" href="#dessert"></div>
+                    <a class="menubart" href="#dessert">Dessert</a>
+                </div>
+
+                <!--maindishes-->
+                <div class="container">
+                    <div style="display:flex;cursor:pointer">
+                        <div class="dot"></div>
+                        <a id="maindishes" class="contitle">Main Dishes</a>
+                    </div>
+                    <div class="menu">
+                        <div class="menuframe" onclick="interface('Curry Noodle','RM 6','/image/maindishes/1.JPG')" style="cursor:pointer">
+                            <img src="/image/maindishes/1.JPG" class="menuimage">
+                            <a class="menuprice">RM 6</a>
+                            <a class="menuname">Curry Noodle</a>
+                        </div>
+                        <div class="menuframe" onclick="interface('Kuey Tiao Noodle','RM 6','/image/maindishes/2.JPG')" style="cursor:pointer">
+                            <img src="/image/maindishes/2.JPG" class="menuimage">
+                            <a class="menuprice">RM 6</a>
+                            <a class="menuname">Kuey Tiao Noodle</a>
+                        </div>
+                        <div class="menuframe" onclick="interface('Chicken Noodle','RM 6','/image/maindishes/3.JPG')" style="cursor:pointer">
+                            <img src="/image/maindishes/3.JPG" class="menuimage">
+                            <a class="menuprice">RM 6</a>
+                            <a class="menuname">Chicken Noodle</a>
+                        </div>
+                        <div class="menuframe" onclick="interface('Curry Mala Noodle','RM 6','/image/maindishes/4.JPG')" style="cursor:pointer">
+                           <img src="/image/maindishes/4.JPG" class="menuimage">
+                           <a class="menuprice">RM 6</a>
+                           <a class="menuname">Mala Noodle</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container" style="margin-bottom:5cm">
+                    <div style="display:flex">
+                        <div class="dot"></div>
+                        <a id="dessert" class="contitle">Dessert</a>
+                    </div>
+                    <div class="menu">
+                        <div class="menuframe" onclick="interface('Fruity Ai-Yu Jelly','RM 4','/image/dessert/1.JPG')" style="cursor:pointer">
+                            <img src="/image/dessert/1.JPG" class="menuimage">
+                            <a class="menuprice">RM 4</a>
+                            <a class="menuname">Fruity Ai-Yu Jelly</a>
+                        </div>
+                        <div class="menuframe" onclick="interface('Brown Sugar Ai-Yu Jelly','RM 4','/image/dessert/2.JPG')" style="cursor:pointer">
+                            <img src="/image/dessert/2.JPG" class="menuimage">
+                            <a class="menuprice">RM 4</a>
+                            <a class="menuname">Brown Sugar Ai-Yu Jelly</a>
+                        </div>
+                        <div class="menuframe" onclick="interface('Golden Cup','RM 4','/image/dessert/3.JPG')" style="cursor:pointer">
+                            <img src="/image/dessert/3.JPG" class="menuimage">
+                            <a class="menuprice">RM 4</a>
+                            <a class="menuname">Golden Cup</a>
+                        </div>
+                        <div class="menuframe" onclick="interface('Pearly Bean Curd','RM 4','/image/dessert/4.JPG')" style="cursor:pointer">
+                           <img src="/image/dessert/4.JPG" class="menuimage">
+                           <a class="menuprice">RM 4</a>
+                           <a class="menuname">Pearly Bean Curd</a>
+                        </div>
+                        <div class="menuframe" onclick="interface('3 Bases Special','RM 4','/image/dessert/6.JPG')" style="cursor:pointer">
+                           <img src="/image/dessert/6.JPG" class="menuimage">
+                           <a class="menuprice">RM 4</a>
+                           <a class="menuname">3 Bases Special</a>
+                        </div>
+                        <div class="menuframe" onclick="interface('Yin Yang Cup','RM 4','/image/dessert/7.JPG')" style="cursor:pointer">
+                           <img src="/image/dessert/7.JPG" class="menuimage">
+                           <a class="menuprice">RM 4</a>
+                           <a class="menuname">Yin Yang Cup</a>
+                        </div>
+                        <div class="menuframe" onclick="interface('Black Cup','RM 4','/image/dessert/8.JPG')" style="cursor:pointer">
+                           <img src="/image/dessert/8.JPG" class="menuimage">
+                           <a class="menuprice">RM 4</a>
+                           <a class="menuname">Black Cup</a>
+                        </div>
+                        <div class="menuframe" onclick="interface('Glass Jelly Special','RM 4','/image/dessert/9.JPG')" style="cursor:pointer">
+                           <img src="/image/dessert/9.JPG" class="menuimage">
+                           <a class="menuprice">RM 4</a>
+                           <a class="menuname">Glass Jelly Special</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--rightbody-->
+            <div class="rightbody">
+                <div class="rightbar">
+                    <div class="rightcontainer">
+                        <a class="carttitle" style="margin-bottom:20px">My Order</a>
+                        <div id="cartContainer"></div>
+                        <div class="subtotalline">
+                            <div class="line"></div>
+                            <div class="subtotal">
+                                <a>Subtotal</a><a>RM 0.00</a>
+                            </div>
+                            <div class="subtotal">
+                                <a>Discount</a><a>RM 0.00</a>
+                            </div>
+                            <div class="promotion">
+                               <a class="promotext">Find Promotion</a>
+                               <a class="rewardtext" href="/rewards.php">Reward</a>
+                            </div>
+                            <div class="line"></div>
+                            <div class="subtotal1">
+                                <a>Total</a><a>RM 0.00</a>
+                            </div>
+                            <div class="checkoutbox">
+                                <a class="checkout">Check Out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <!--footer-->
+        <div class="footer">
+            <div class="Fcont">
+                <div class="Fcontact">
+                    <p>Contact Us</p>
+                    <p>+60 17 - 506 0850</p><br>
+                    <p>Contact Us (Developers)</p>
+                    <p>+60 11 - 166 9995 4</p>
+                    <p>+60 10 - 406 3398</p>
+                    <br>
+                    <p>Email (Developers)</p>
+                    <p>justinphong2@gmail.com</p>
+                    <p>lee@gmail.com</p>
+                </div>
+                <div class="conbutton">
+                    <div class="Frectangle" onclick="window.location.href='/order.php'">
+                        <p>Order Now</p>
+                    </div>
+                    <div class="Frectangle1" onclick="window.location.href='weixin://dl/chat?S13798246'">
+                        <img src="/image/wechat.png" class="Ficon"><p class="FBT">Wechat</p>
+                    </div>
+                    <div class="Frectangle2" onclick="window.location.href='https://t.me/+GZrY4rbGtQ1kNzk1'">
+                        <img src="/image/telegram.png" class="Ficon"><p class="FBT">Telegram</p>
+                    </div>
+                    <div class="copyright">© Lee and Phong Copyright 2024</div>
+                </div>
+                <div class="Fmap">
+                    <img src="/image/map.png" class="Fmapi" onclick="window.location.href='https://maps.app.goo.gl/xNfV9CApXb4VZnvW9'">
+                    <p class="FmapT">Cafe Inasis TNB @ UUM</p>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        function closeinterface() {
+            var x = document.getElementsByClassName("orderinterface")[0];
+            var y =document.getElementById("count") 
+            if (x) { 
+                x.style.display = "none";
+                y.textContent = "1";
+            } else {
+                console.log("Element with id 'orderinterface' not found.");
+            }
+        }
+
+        function interface(name,price,image) {
+            var x = document.getElementsByClassName("orderinterface")[0]; 
+            x.style.display = "flex";
+            var selectedname = document.getElementById("name");
+            var selectedprice =document.getElementById("price");
+            var selectedimage =document.getElementById("image");
+            selectedimage.src =image;
+            selectedname.textContent =name;
+            selectedprice.textContent=price;
+        }
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape" || event.keyCode === 27) {
+                closeinterface();
+            }
+        });
+
+        function add() {
+            var x =document.getElementById("count")
+            var currentCount = parseInt(count.textContent);
+            if (currentCount >= 1 && currentCount<=9) {
+                currentCount += 1
+                x.textContent = currentCount
+            } else {
+                console.log("error")
+            }
+        }
+
+        function reduce() {
+            var x =document.getElementById("count")
+            var currentCount = parseInt(count.textContent);
+            if (currentCount > 1) {
+                currentCount -= 1
+                x.textContent = currentCount
+            } else {
+                console.log("error")
+            }
+        }
+
+        function addtocart() {
+        // Get the count element and parse its text content to an integer
+        var countElement = document.getElementById("count");
+        var count = parseInt(countElement.textContent);
+
+        // Get the name, price, and image source from the respective elements
+        var name = document.getElementById("name").textContent;
+        var priceText = document.getElementById("price").textContent;
+        var price = parseFloat(priceText.replace(/[^\d.]/g, '')); // Extract numerical value from price text
+        var imgSrc = document.getElementById("image").src;
+
+        // Calculate the total price based on the count and item price
+        var totalPrice = price * count;
+
+        // Create a new cart item element
+        var newCart = document.createElement("div");
+        newCart.className = 'cart';
+        newCart.innerHTML = `
+            <img src="${imgSrc}" class="ordermenuimage" id="cartimage">
+            <div style="display:flex;flex-direction:column;flex:1;margin-left:20px;">
+                <a style="font-weight:bold;" id="cartname">${name}</a>
+                <div>
+                    <span>x</span><span id="cartcount">${count}</span>
+                </div>
+                <a style="color:#e03e49;font-size:10px;margin-top:5px;cursor:pointer" onclick="remove(this)">remove</a>
+            </div>
+            <a id="cartprice">${totalPrice.toFixed(2)}</a>
+        `;
+
+        // Append the new cart item to the cart container
+        var cartContainer = document.getElementById('cartContainer');
+        cartContainer.appendChild(newCart);
+
+        // Close the interface after adding the item to the cart
+        calc()
+        closeinterface();
+    }
+
+    function remove(a) {
+        var cartItem = a.parentNode.parentNode;
+        cartItem.parentNode.removeChild(cartItem);
+        calc()
+    }
+
+    function calc() {
+    var cartItems = document.getElementsByClassName('cart');
+    var subtotal = 0;
+
+    // Calculate subtotal by iterating over each cart item
+    for (var i = 0; i < cartItems.length; i++) {
+        var cartItem = cartItems[i];
+        var cartPrice = parseFloat(cartItem.querySelector('#cartprice').textContent);
+
+        subtotal += cartPrice;
+    }
+
+    // Update subtotal and total displayed on the page
+    var subtotalElement = document.querySelector('.subtotal a:last-child');
+    var totalElement = document.querySelector('.subtotal1 a:last-child');
+
+    // Update subtotal
+    subtotalElement.textContent = 'RM ' + subtotal.toFixed(2);
+
+    // For simplicity, assume discount is 0
+    var discount = 0;
+
+    // Calculate total (subtotal - discount)
+    var total = subtotal - discount;
+
+    // Update total
+    totalElement.textContent = 'RM ' + total.toFixed(2);
+}
+
+    </script>
+
+</html>

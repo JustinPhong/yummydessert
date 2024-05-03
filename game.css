@@ -1,0 +1,285 @@
+html,body
+{
+    width: 100%;
+    height: 100%;
+    min-width: 26cm;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+a {
+    text-decoration: none;
+    color: inherit
+}
+
+/*footer*/
+.footer {
+    background-color: #2D2D2D;
+    height: 300px;
+}
+
+.Fcont {
+    display: flex;
+    justify-content: center;
+    gap: 90px;
+    margin-left: 60px;
+    margin-right: 60px;
+}
+
+.Fcontact {
+    margin-top: 50px;
+    font-family: "Inter";
+    font-style: normal;
+    color: #ffffff;
+    line-height: 2px;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.Frectangle {
+    height: 36px;
+    width: 290px;
+    background-color: #8D8D8D;
+    color: #ffffff;
+    font-family: "Inter";
+    font-weight: 300;
+    font-size: 12px;
+    text-align: center;
+    line-height:35px;
+    margin-bottom: 30px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.Frectangle1 {
+    height: 36px;
+    width: 290px;
+    display: flex;
+    border-radius: 3px;
+    background-color: #00CC00;
+    margin-bottom: 30px;
+    cursor: pointer;
+    
+}
+.Frectangle2 {
+    height: 36px;
+    width: 290px;
+    background-color: #20A9DC;
+    display: flex;
+    border-radius: 3px;
+    margin-bottom: 60px;
+    cursor: pointer;
+}
+
+.FBT {
+    color: #ffffff;
+    font-family: "Inter";
+    font-weight: 300;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.Ficon {
+    margin-left: 100px;
+    margin-top: 7px;
+    height: 22px;
+    width: 22px;    
+}
+
+.conbutton {
+    margin-top: 30px;
+}
+
+.Fmap {
+    margin-top: 30px;
+    width: 250px;
+}
+
+.Fmapi {
+    margin-top: 30px;
+    width: 250px;
+    cursor: pointer;
+}
+
+.FmapT {
+    color: #ffffff;
+    text-align: center;
+    font-family: "Inter";
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.copyright {
+    text-align: center;
+    color: #ffffff;
+    font-family: "Inter";
+    font-weight: 300;
+    font-size: 12px;
+    margin-top: 10px;
+}
+/*footer*/
+
+/*navigation*/
+.icon {
+    max-height: 100px;
+    margin-left: 10px;
+    margin-top: 10px; 
+}
+
+.navi-tb {
+    display: inline-flex;
+    margin-right: 30px;
+    margin-top: 30px; 
+    height: 20px;
+    
+}
+
+.navi-t {
+    margin-left: 60px;
+    font-family: "Inter";
+    font-weight: 300;
+}
+
+.navi-b {
+    background-color: #FF9BA2;
+    height: 90px;
+    width: 100%;
+    margin-left: 0;
+}
+
+.navi {
+    display: flex;
+    padding-right: 50px;
+    justify-content: space-between;
+}
+/*navigation*/
+
+.title {
+    display: flex;
+    justify-content: center;
+    font-family: "Jomhuria", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 35px;
+    padding-top: 1.5cm;
+}
+
+.container {
+    display: block;
+    margin-top: 1cm;
+}
+
+.menuimage {
+    width: 4cm;
+    height: 4cm;
+    border-radius: 10%;
+    object-fit: cover;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25); 
+    background-color: #ffffff;
+}
+
+.menu {
+    display: flex;
+    margin-top: 0.5cm;
+    margin-left: 1cm;
+    flex-wrap: wrap;
+}
+
+.menuframe {
+    flex-direction: column;
+    display: flex;
+    margin-right: 25px;
+    margin-bottom: 20px;
+}
+
+.menuname {
+    margin-top: 10px;
+    font-family: "Inter";
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.menuprice {
+    font-family: "Inter";
+    font-size: 15px;
+}
+
+.gamebox {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+  
+  .world {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .score {
+    font-family: 'Inter';
+    font-size: 3vmin;
+  }
+
+  .scoreimg{
+    height: 10%;
+    width: 10%;
+    margin-right: -15px;
+  }
+
+  .scoreboard {
+    position: absolute;
+    right: 0px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  .start-screen {
+    position: absolute;
+    font-family: 'Inter';
+    font-size: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  .ground {
+    --left: 0;
+    position: absolute;
+    width: 300%;
+    bottom: 0;
+    left: calc(var(--left) * 1%)
+  }
+  
+  .dino {
+    --bottom: 0;
+    position: absolute;
+    left: 1%;
+    height: 15%;
+    bottom: calc(var(--bottom) * 1%);
+  }
+  
+  .cactus {
+    position: absolute;
+    left: calc(var(--left) * 1%);
+    height: 18%;
+    bottom: 0;
+  }
+
+  .coin {
+    position: absolute;
+    left: calc(var(--left) * 1%);
+    height: 10%;
+    bottom: 1.5cm; 
+  }

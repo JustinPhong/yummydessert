@@ -145,10 +145,7 @@
             console.error("Error retrieving user data:", error);
         });
 
-        // Redirect after a short delay
-        setTimeout(function() {
-            window.location.href = "index.html";
-        }, 100); 
+
     })
     .catch((error) => {
         const errorCode = error.code;

@@ -124,7 +124,7 @@
 
         // Retrieve additional user data from Firestore based on email
         const userEmail = user.email;
-        const usersRef = collection(db, 'users'); // Replace 'users' with your Firestore collection name
+        const usersRef = collection(db, 'users/'); // Replace 'users' with your Firestore collection name
 
         // Query Firestore to find data based on the signed-in user's email
         const query = query(usersRef, where('email', '==', userEmail));

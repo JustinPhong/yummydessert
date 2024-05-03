@@ -35,13 +35,15 @@
                 <div style="margin-top:15px;font-size:15px">
                     <a>Don’t have an account? </a><a href="signup.html" style="color:#2E77E5">Sign Up Free!</a>
                 </div>
-                <div style="display:flex;justify-content:space-between;flex-direction:column;margin-top:20px">
-                    <a class="lable">Username</a>
-                    <input id="username" placeholder="Username" type="text"></input>
-                    <a class="lable">Password</a>
-                    <input id="password" type="password" placeholder="Password"></input>
-                </div>
-                <input type="submit" class="signupbutton" value="Login Now" id="login"></input>
+                <form>
+                    <div style="display:flex;justify-content:space-between;flex-direction:column;margin-top:20px">
+                        <label class="lable">Email</label>
+                        <input id="email" placeholder="Email" type="email"></input>
+                        <label class="lable">Password</label>
+                        <input id="password" type="password" placeholder="Password"></input>
+                    </div>
+                    <input type="submit" class="signupbutton" value="Login Now" id="login"></input>
+                </form>
             </div>
         </div>
 
@@ -111,6 +113,8 @@
 
                 document.getElementById("login").addEventListener('click', function(e) {
                     e.preventDefault(); 
+                    const email = document.getElementById("email");
+                    const password = document.getElementById("password");
                     signInWithEmailAndPassword(auth, email, password)
                     .then((userCredential) => {
                         // Signed in 

@@ -143,6 +143,7 @@
                 .then((userCredential) => {
                     // Signed up 
                     const user = userCredential.user;
+                    window.alert("Signup successfully")
                     window.location.href = "login.html";
                 })
                 .catch((error) => {

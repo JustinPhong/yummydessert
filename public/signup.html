@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<html>
     <header>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="signup.css">
@@ -49,9 +48,9 @@
                     <a class="lable">Date of Birth</a>
                     <input id="birthday" type="date"></input>
                 </div>
-                <div style="display:flex;width:10cm;padding-top:10px;">
+                <div style="text-align: left;width:10cm;padding-top:10px;">
                     <input type="checkbox" id="checkbox"></input>
-                    <a style="font-size:12px;text-align:left;padding:10px 5px">By clicking here, I state that I have read and understood the terms and conditions.</a>
+                    <a style="font-size:12px;text-align:left;padding:10px 5px">By clicking here, I state that I have read and understood the <a href="TermsAndCondition.html" style="font-size:12px;text-align:left;padding:0px 26px;color: blue;">terms and conditions.</a></a>
                 </div>
                 <input type="submit" class="signupbutton" value="Sign Up" id="submit"></input>
             </div>
@@ -69,7 +68,7 @@
                     <br>
                     <p>Email (Developers)</p>
                     <p>justinphong2@gmail.com</p>
-                    <p>lee@gmail.com</p>
+                    <p>aries010409@gmail.com</p>
                 </div>
                 <div class="conbutton">
                     <div class="Frectangle" onclick="window.location.href='order.html'">
@@ -126,33 +125,71 @@
             const auth = getAuth(app);
             const db = getDatabase();
 
-            document.getElementById("submit").addEventListener('click', function(e){
-                e.preventDefault();
+            document.addEventListener('DOMContentLoaded', () => {
+                const auth = getAuth();
+                const db = getDatabase();
 
-                const email = document.getElementById("email").value;
-                const password = document.getElementById("password").value;
-                
-                createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    // Signed up 
-                    const user = auth.currentUser;
-                    set(ref(db, 'users/' + user.uid), {
-                    username: document.getElementById("username").value,
-                    name: document.getElementById("name").value,
-                    email: document.getElementById("email").value,
-                    contact: document.getElementById("contact").value,
-                    birthday: document.getElementById("birthday").value
-                    });
-                    setTimeout(function() {
-                        window.location.href = "login.html";
-                    }, 100); 
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    window.alert(errorMessage)
+                document.getElementById("submit").addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const email = document.getElementById("email").value;
+                    const password = document.getElementById("password").value;
+
+                    if (!validateEmail(email) || !validatePassword(password) || !validateBirth() || !validateCheck()) {
+                        if (!validateEmail(email)){
+                            window.alert("Email is not valid");
+                        } else if (!validatePassword(password)){
+                            window.alert("Password must at least 6 numbers");
+                        } else if (!validateBirth()) {
+                            window.alert("You must at least 18 years old");
+                        } else if (!validateCheck()) {
+                            window.alert("Please check the Terms and Condition box");
+                        }
+                    } else {
+                        createUserWithEmailAndPassword(auth, email, password)
+                            .then((userCredential) => {
+                                const user = userCredential.user;
+                                set(ref(db, 'users/' + user.uid), {
+                                    username: document.getElementById("username").value,
+                                    name: document.getElementById("name").value,
+                                    email: email,
+                                    contact: document.getElementById("contact").value,
+                                    birthday: document.getElementById("birthday").value
+                                }).then(() => {
+                                    window.location.href = "login.html";
+                                }).catch((error) => {
+                                    console.error("Error writing user data to database:", error);
+                                });
+                            })
+                            .catch((error) => {
+                                const errorMessage = error.message;
+                                window.alert(errorMessage);
+                            });
+                    }
                 });
-            })
+
+                function validateEmail(email) {
+                    const expression = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    return expression.test(email);
+                }
+
+                function validatePassword(password) {
+                    return password.length >= 6;
+                }
+
+                function validateBirth() {
+                    const birthday = document.getElementById("birthday").value;
+                    const dob = new Date(birthday);
+                    const ageInMilliseconds = Date.now() - dob.getTime();
+                    const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
+                    return ageInYears >= 18;
+                }
+
+                function validateCheck() {
+                    return document.getElementById("checkbox").checked;
+                }
+            });
+
         </script>
     </body>
 </html>

@@ -125,6 +125,7 @@
                         var user = auth.currentUser;
                         sessionStorage.setItem("userid",user.uid)
                         sessionStorage.setItem("login", "yes");
+                        sessionStorage.removeItem("man")
                         setTimeout(function() {
                             window.location.href = "index.html";
                         }, 100); 

@@ -15,14 +15,16 @@
     <body style="overflow-x:scroll">
 
         <!--small man-->
-        <div class="manCont">
-        <div class="manCon">
-            <div class="manX">
-                <img src="image/X.png?raw=true" class="manX">
-            </div>
-                <div class="man" onclick="window.location.href='/game.html'">
+        <div class="manCont" id="manCont">
+            <div class="manCon">
+                <div class="manX" onclick="closeman()">
+                    <img src="image/X.png?raw=true" class="manX">
+                </div>
+                <a href="game.html">
+                <div class="man">
                     <img src="image/man.gif?raw=true" class="man">
                 </div>
+                <a>
             </div>
         </div>
 
@@ -159,7 +161,27 @@
         <script>
             function signout1() {
                 sessionStorage.removeItem("login");
+                sessionStorage.removeItem("man");
                 window.location.href = "login.html";
+            }
+            
+            function closeman() {
+                const man = document.getElementById("manCont");
+                if (man) {
+                    man.style.display = "none";
+                    sessionStorage.setItem("man","close")
+                } else {
+                    console.error("Element with ID 'manCont' not found.");
+                }
+            }
+            
+            function openman() {
+                const manStatus = sessionStorage.getItem("man")
+                if (manStatus !== "close"){
+                const man = document.getElementById("manCont");
+                man.style.display = "block";
+                }
+
             }
         </script>
         <script type="module">
@@ -208,6 +230,7 @@
                 }, (error) => {
                     console.error("Error fetching user data:", error);
                 });
+                openman()
             }
         </script>
     </body>

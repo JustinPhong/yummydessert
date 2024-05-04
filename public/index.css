@@ -66,6 +66,7 @@ html,body
 }
 
 .manCont {
+    display: none;
     position: absolute;
     right: 40px;
     bottom: 30px;

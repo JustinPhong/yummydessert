@@ -15,9 +15,9 @@
     <body style="overflow-x:scroll">
 
         <!--small man-->
-        <div class="manCont">
+        <div class="manCont" id="manCont">
             <div class="manCon">
-                <div class="manX">
+                <div class="manX" onclick="closeman()">
                     <img src="image/X.png?raw=true" class="manX">
                 </div>
                 <a href="game.html">
@@ -173,12 +173,31 @@
         </div>
     </body>
     <script>
-        function account(){
-            if (sessionStorage.getItem("login") === "yes" ){
-                window.location.href="account.html"
+            function account() {
+                if (sessionStorage.getItem("login") === "yes") {
+                    window.location.href = "account.html";
+                } else {
+                    window.location.href = "login.html";
+                }
             }
-            else {
-                window.location.href="login.html"
-            }};
+
+            function closeman() {
+                const man = document.getElementById("manCont");
+                if (man) {
+                    man.style.display = "none";
+                    sessionStorage.setItem("man","close")
+                } else {
+                    console.error("Element with ID 'manCont' not found.");
+                }
+            }
+            
+            window.onload = function openman() {
+                const manStatus = sessionStorage.getItem("man")
+                if (manStatus !== "close"){
+                const man = document.getElementById("manCont");
+                man.style.display = "block";
+                }
+
+            }
     </script>
 </html>

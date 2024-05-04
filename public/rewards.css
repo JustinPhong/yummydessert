@@ -136,11 +136,13 @@ a {
     float: right;
     width: 15px;
     padding-bottom: 4px;
+    cursor: pointer;
 }
 
 .man {
     width: 50px;
     padding-right: 10px;
+    cursor: pointer;
 }
 /*smallman*/
 
@@ -306,4 +308,23 @@ a {
     font-size: 10px;
     width: 20px;
     height: 20px;
+    transition: 0.3s;
+}
+
+.orderinterface .card .dot:hover {
+    background-color: #FF7F8D;
+}
+
+.addtocartbutton {
+    color:#ffffff;background-color:#FF9BA2;
+    display:flex;justify-content:center;
+    align-items:center;
+    height:1cm;
+    border-radius:5px;
+    cursor:pointer;
+    transition: 0.3s;
+}
+
+.addtocartbutton:hover {
+    background-color: #FF7F8D;
 }

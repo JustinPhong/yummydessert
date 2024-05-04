@@ -191,4 +191,10 @@ input[type="date"] {
     width: 8cm;
     height: 1cm;
     margin: 20px 0px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.signupbutton:hover {
+    background-color: #FF7F8D;
 }

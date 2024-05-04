@@ -58,10 +58,10 @@
                         <a class="leftbutton" href="purchase.html">My Purchase</a>
                     </div>
                     </a>
-                    <a href="logout">
+                    <a onclick="signout1()">
                         <div class="buttonbar">
                             <img src="image/logoutbutton.png?raw=true" class="buttonimg">
-                            <a class="leftbutton" href="logout.html">Logout</a>
+                            <a class="leftbutton" onclick="signout1()">Logout</a>
                         </div>
                     </a>
                 </div>
@@ -159,6 +159,10 @@
                 else {
                     window.location.href="login.html"
                 }};
+            function signout1() {
+                sessionStorage.removeItem("login");
+                window.location.href = "login.html";
+            }
         </script>
 
     </body>

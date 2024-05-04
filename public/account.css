@@ -136,11 +136,13 @@ a {
     float: right;
     width: 15px;
     padding-bottom: 4px;
+    cursor: pointer;
 }
 
 .man {
     width: 50px;
     padding-right: 10px;
+    cursor: pointer;
 }
 /*smallman*/
 
@@ -212,6 +214,7 @@ a {
     display: flex;
     text-align: center;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .rightcon {
@@ -272,4 +275,10 @@ table, td {
     font-weight: bold;
     color: #ffffff;
     margin-bottom: 20px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.submitbutton:hover{
+    background-color: #FF7F8D;
 }

@@ -80,11 +80,13 @@ html,body
     float: right;
     width: 15px;
     padding-bottom: 4px;
+    cursor: pointer;
 }
 
 .man {
     width: 50px;
     padding-right: 10px;
+    cursor: pointer;
 }
 
 .order {

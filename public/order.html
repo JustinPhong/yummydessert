@@ -85,80 +85,23 @@
 
                 <!--maindishes-->
                 <div class="container">
-                    <div style="display:flex;cursor:pointer">
+                    <div style="display: flex; cursor: pointer">
                         <div class="dot"></div>
                         <a id="maindishes" class="contitle">Main Dishes</a>
                     </div>
                     <div class="menu">
-                        <div class="menuframe" onclick="interface('Curry Noodle','RM 6','image/maindishes/1.JPG?raw=true')" style="cursor:pointer">
-                            <img src="image/maindishes/1.JPG?raw=true" class="menuimage">
-                            <a class="menuprice">RM 6</a>
-                            <a class="menuname">Curry Noodle</a>
-                        </div>
-                        <div class="menuframe" onclick="interface('Kuey Tiao Noodle','RM 6','image/maindishes/2.JPG?raw=true')" style="cursor:pointer">
-                            <img src="image/maindishes/2.JPG?raw=true" class="menuimage">
-                            <a class="menuprice">RM 6</a>
-                            <a class="menuname">Kuey Tiao Noodle</a>
-                        </div>
-                        <div class="menuframe" onclick="interface('Chicken Noodle','RM 6','image/maindishes/3.JPG?raw=true')" style="cursor:pointer">
-                            <img src="image/maindishes/3.JPG?raw=true" class="menuimage">
-                            <a class="menuprice">RM 6</a>
-                            <a class="menuname">Chicken Noodle</a>
-                        </div>
-                        <div class="menuframe" onclick="interface('Curry Mala Noodle','RM 6','image/maindishes/4.JPG?raw=true')" style="cursor:pointer">
-                           <img src="image/maindishes/4.JPG?raw=true" class="menuimage">
-                           <a class="menuprice">RM 6</a>
-                           <a class="menuname">Mala Noodle</a>
-                        </div>
+                        <script type="module" src="menu.js"></script>
                     </div>
                 </div>
+                
 
                 <div class="container" style="margin-bottom:5cm">
                     <div style="display:flex">
                         <div class="dot"></div>
                         <a id="dessert" class="contitle">Dessert</a>
                     </div>
-                    <div class="menu">
-                        <div class="menuframe" onclick="interface('Fruity Ai-Yu Jelly','RM 4','image/dessert/1.JPG?raw=true')" style="cursor:pointer">
-                            <img src="image/dessert/1.JPG?raw=true" class="menuimage">
-                            <a class="menuprice">RM 4</a>
-                            <a class="menuname">Fruity Ai-Yu Jelly</a>
-                        </div>
-                        <div class="menuframe" onclick="interface('Brown Sugar Ai-Yu Jelly','RM 4','image/dessert/2.JPG?raw=true')" style="cursor:pointer">
-                            <img src="image/dessert/2.JPG?raw=true" class="menuimage">
-                            <a class="menuprice">RM 4</a>
-                            <a class="menuname">Brown Sugar Ai-Yu Jelly</a>
-                        </div>
-                        <div class="menuframe" onclick="interface('Golden Cup','RM 4','image/dessert/3.JPG?raw=true')" style="cursor:pointer">
-                            <img src="image/dessert/3.JPG?raw=true" class="menuimage">
-                            <a class="menuprice">RM 4</a>
-                            <a class="menuname">Golden Cup</a>
-                        </div>
-                        <div class="menuframe" onclick="interface('Pearly Bean Curd','RM 4','image/dessert/4.JPG?raw=true')" style="cursor:pointer">
-                           <img src="image/dessert/4.JPG?raw=true" class="menuimage">
-                           <a class="menuprice">RM 4</a>
-                           <a class="menuname">Pearly Bean Curd</a>
-                        </div>
-                        <div class="menuframe" onclick="interface('3 Bases Special','RM 4','image/dessert/6.JPG?raw=true')" style="cursor:pointer">
-                           <img src="image/dessert/6.JPG?raw=true" class="menuimage">
-                           <a class="menuprice">RM 4</a>
-                           <a class="menuname">3 Bases Special</a>
-                        </div>
-                        <div class="menuframe" onclick="interface('Yin Yang Cup','RM 4','image/dessert/7.JPG?raw=true')" style="cursor:pointer">
-                           <img src="image/dessert/7.JPG?raw=true" class="menuimage">
-                           <a class="menuprice">RM 4</a>
-                           <a class="menuname">Yin Yang Cup</a>
-                        </div>
-                        <div class="menuframe" onclick="interface('Black Cup','RM 4','image/dessert/8.JPG?raw=true')" style="cursor:pointer">
-                           <img src="image/dessert/8.JPG?raw=true" class="menuimage">
-                           <a class="menuprice">RM 4</a>
-                           <a class="menuname">Black Cup</a>
-                        </div>
-                        <div class="menuframe" onclick="interface('Glass Jelly Special','RM 4','image/dessert/9.JPG?raw=true')" style="cursor:pointer">
-                           <img src="image/dessert/9.JPG?raw=true" class="menuimage">
-                           <a class="menuprice">RM 4</a>
-                           <a class="menuname">Glass Jelly Special</a>
-                        </div>
+                    <div class="menu1">
+                        <script type="module" src="menu.js"></script>
                     </div>
                 </div>
             </div>
@@ -171,22 +114,22 @@
                         <div id="cartContainer"></div>
                         <div class="subtotalline">
                             <div class="line"></div>
-                            <div class="subtotal">
-                                <a>Subtotal</a><a>RM 0.00</a>
+                            <div class="subtotal" id="subtotal">
+                                <a>Subtotal</a><a id="subtotalvalue">RM 0.00</a>
                             </div>
-                            <div class="subtotal">
-                                <a>Discount</a><a>RM 0.00</a>
+                            <div class="subtotal" id="discount">
+                                <a>Discount</a><a id="discountvalue">RM 0.00</a>
                             </div>
                             <div class="promotion">
                                <a class="promotext">Find Promotion</a>
                                <a class="rewardtext" href="rewards.html">Reward</a>
                             </div>
                             <div class="line"></div>
-                            <div class="subtotal1">
-                                <a>Total</a><a>RM 0.00</a>
+                            <div class="subtotal1" id="total">
+                                <a>Total</a><a id="totalvalue">RM 0.00</a>
                             </div>
                             <div class="checkoutbox">
-                                <a class="checkout">Check Out</a>
+                                <div class="checkout" id="checkout">Check Out</div>
                             </div>
                         </div>
                     </div>
@@ -272,17 +215,6 @@
             } else {
                 console.log("Element with id 'orderinterface' not found.");
             }
-        }
-
-        function interface(name,price,image) {
-            var x = document.getElementsByClassName("orderinterface")[0]; 
-            x.style.display = "flex";
-            var selectedname = document.getElementById("name");
-            var selectedprice =document.getElementById("price");
-            var selectedimage =document.getElementById("image");
-            selectedimage.src =image;
-            selectedname.textContent =name;
-            selectedprice.textContent=price;
         }
 
         document.addEventListener("keydown", function(event) {
@@ -387,5 +319,6 @@
 }
 
     </script>
+    <script type="module" src="order.js"></script>
 
 </html>

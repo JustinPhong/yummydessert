@@ -306,11 +306,19 @@ a {
     flex-wrap: wrap;
 }
 
+.menu1 {
+    display: flex;
+    margin-top: 0.5cm;
+    margin-left: 1cm;
+    flex-wrap: wrap;
+}
+
 .menuframe {
     flex-direction: column;
     display: flex;
     margin-right: 25px;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .menuname {

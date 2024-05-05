@@ -30,9 +30,15 @@
     document.getElementById("checkout").addEventListener('click', function(e) {
         e.preventDefault();
 
+        const user = auth.currentUser;
+        if (!user){
+            alert("Please Login First");
+            window.location.href="login.html";
+            return;
+        }
+        const userId = user.uid;
 
-        const userId = auth.currentUser.uid;
-    
+
         // Generate a unique order ID
         const orderId = generateOrderId();
     

@@ -18,7 +18,9 @@ const auth = getAuth(app);
 
 document.getElementById("logout").addEventListener('click',function() {
     auth.signOut().then(function() {
-    console.log('Signed Out');
+    sessionStorage.removeItem("login");
+    alert('Signed Out');
+    window.location.href="login.html";
     }, function(error) {
     console.error('Sign Out Error', error);
     });

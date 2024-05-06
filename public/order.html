@@ -20,6 +20,7 @@
                 <a class="dot">X</a>
             </div>
             <div class="cardcontent">
+            <a style="display: none;" id="menu">0</a>
             <img src="image/maindishes/4.JPG?raw=true" class="menuimage" id="image">
             <a style="font-weight:bold; margin: 10px 0px 2px;" id="name">3 Bases Special</a>
             <a style="margin-bottom: 10px;" id="price">RM 4.00</a>
@@ -34,7 +35,7 @@
                     <a style="background-color:#ffffff; padding:5px;cursor:pointer;user-select: none;" id="reduce" onclick="add()">+</a>
                 </div>
             </div>
-                <div class="addtocartbutton" onclick="addtocart()">Add To Cart</div>
+                <div class="addtocartbutton" id="addtocart" >Add To Cart</div>
             </div>
         </div>
     </div>
@@ -94,7 +95,6 @@
                     </div>
                 </div>
                 
-
                 <div class="container" style="margin-bottom:5cm">
                     <div style="display:flex">
                         <div class="dot"></div>
@@ -244,80 +244,6 @@
                 console.log("error")
             }
         }
-
-        function addtocart() {
-        // Get the count element and parse its text content to an integer
-        var countElement = document.getElementById("count");
-        var count = parseInt(countElement.textContent);
-
-        // Get the name, price, and image source from the respective elements
-        var name = document.getElementById("name").textContent;
-        var priceText = document.getElementById("price").textContent;
-        var price = parseFloat(priceText.replace(/[^\d.]/g, '')); // Extract numerical value from price text
-        var imgSrc = document.getElementById("image").src;
-
-        // Calculate the total price based on the count and item price
-        var totalPrice = price * count;
-
-        // Create a new cart item element
-        var newCart = document.createElement("div");
-        newCart.className = 'cart';
-        newCart.innerHTML = `
-            <img src="${imgSrc}" class="ordermenuimage" id="cartimage">
-            <div style="display:flex;flex-direction:column;flex:1;margin-left:20px;">
-                <a style="font-weight:bold;" id="cartname">${name}</a>
-                <div>
-                    <span>x</span><span id="cartcount">${count}</span>
-                </div>
-                <a style="color:#e03e49;font-size:10px;margin-top:5px;cursor:pointer" onclick="remove(this)">remove</a>
-            </div>
-            <a id="cartprice">${totalPrice.toFixed(2)}</a>
-        `;
-
-        // Append the new cart item to the cart container
-        var cartContainer = document.getElementById('cartContainer');
-        cartContainer.appendChild(newCart);
-
-        // Close the interface after adding the item to the cart
-        calc()
-        closeinterface();
-    }
-
-    function remove(a) {
-        var cartItem = a.parentNode.parentNode;
-        cartItem.parentNode.removeChild(cartItem);
-        calc()
-    }
-
-    function calc() {
-    var cartItems = document.getElementsByClassName('cart');
-    var subtotal = 0;
-
-    // Calculate subtotal by iterating over each cart item
-    for (var i = 0; i < cartItems.length; i++) {
-        var cartItem = cartItems[i];
-        var cartPrice = parseFloat(cartItem.querySelector('#cartprice').textContent);
-
-        subtotal += cartPrice;
-    }
-
-    // Update subtotal and total displayed on the page
-    var subtotalElement = document.querySelector('.subtotal a:last-child');
-    var totalElement = document.querySelector('.subtotal1 a:last-child');
-
-    // Update subtotal
-    subtotalElement.textContent = 'RM ' + subtotal.toFixed(2);
-
-    // For simplicity, assume discount is 0
-    var discount = 0;
-
-    // Calculate total (subtotal - discount)
-    var total = subtotal - discount;
-
-    // Update total
-    totalElement.textContent = 'RM ' + total.toFixed(2);
-}
-
     </script>
     <script type="module" src="order.js"></script>
 

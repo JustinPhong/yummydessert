@@ -2,6 +2,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
     import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
     import { getAuth } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+    import { calcSubtotal } from "./menu.js";
 
 
     // Your web app's Firebase configuration
@@ -43,16 +44,9 @@
         const orderId = generateOrderId();
     
         // Get order details from input fields
-        const subtotalValueElement = document.getElementById("subtotalvalue");
+        const subtotalValueElement = calcSubtotal(subtotal);
         const discountValueElement = document.getElementById("discountvalue");
-        const totalValueElement = document.getElementById("totalvalue");
-    
-        // Validate and parse subtotal value
-        const subtotalValue = parseFloat(subtotalValueElement.textContent.trim().replace('RM ', ''));
-        if (isNaN(subtotalValue)) {
-            console.error("Invalid subtotal value:", subtotalValueElement.textContent);
-            return; // Exit function if subtotal value is invalid
-        }
+        const totalValueElement = calcSubtotal(total);
     
         // Validate and parse discount value
         const discountValue = parseFloat(discountValueElement.textContent.trim().replace('RM ', ''));
@@ -61,17 +55,10 @@
             return; // Exit function if discount value is invalid
         }
     
-        // Validate and parse total value
-        const totalValue = parseFloat(totalValueElement.textContent.trim().replace('RM ', ''));
-        if (isNaN(totalValue)) {
-            console.error("Invalid total value:", totalValueElement.textContent);
-            return; // Exit function if total value is invalid
-        }
-    
         // Format values with "RM" prefix before storing in the database
-        const formattedSubtotal = `RM ${subtotalValue.toFixed(2)}`;
+        const formattedSubtotal = `RM ${subtotalValueElement.toFixed(2)}`;
         const formattedDiscount = `RM ${discountValue.toFixed(2)}`;
-        const formattedTotal = `RM ${totalValue.toFixed(2)}`;
+        const formattedTotal = `RM ${totalValueElement.toFixed(2)}`;
 
     
         // Set order details in the 'orders' collection using the generated order ID

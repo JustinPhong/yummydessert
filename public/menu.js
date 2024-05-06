@@ -162,18 +162,20 @@ export function calcSubtotal() {
     var subtotal = 0;
     var discount = 0;
     var total = 0;
+    const menuInCart = [];
 
     if (cartItems.length===0){
         total = 0;
         discount = 0;
         subtotal = 0;
         updateSubtotalAndTotal(subtotal, total);
+        menuInCart.length = 0;
     }
-
     // Loop through each cart item and calculate subtotal
     for (var i = 0; i < cartItems.length; i++) {
         var cartItem = cartItems[i];
         var selectedmenuid = parseFloat(cartItem.querySelector('#menuid').textContent);
+        menuInCart.push(selectedmenuid);
         // Fetch price from Firebase based on selectedmenuid
         if (selectedmenuid > 10) {
             const dessertRef = ref(db, 'dessert/' + selectedmenuid);
@@ -198,7 +200,7 @@ export function calcSubtotal() {
                 }
             });
         }
-    } return total, subtotal
+    } return {total: total, subtotal: subtotal, menuInCart, discount:discount}
 }
 
 function updateSubtotalAndTotal(subtotal, total) {

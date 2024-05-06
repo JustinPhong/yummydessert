@@ -44,25 +44,18 @@
         const orderId = generateOrderId();
     
         // Get order details from input fields
-        const subtotalValueElement = calcSubtotal(subtotal);
-        const discountValueElement = document.getElementById("discountvalue");
-        const totalValueElement = calcSubtotal(total);
-    
-        // Validate and parse discount value
-        const discountValue = parseFloat(discountValueElement.textContent.trim().replace('RM ', ''));
-        if (isNaN(discountValue)) {
-            console.error("Invalid discount value:", discountValueElement.textContent);
-            return; // Exit function if discount value is invalid
-        }
+        const { total, subtotal, menuInCart, discount } = calcSubtotal();
     
         // Format values with "RM" prefix before storing in the database
-        const formattedSubtotal = `RM ${subtotalValueElement.toFixed(2)}`;
-        const formattedDiscount = `RM ${discountValue.toFixed(2)}`;
-        const formattedTotal = `RM ${totalValueElement.toFixed(2)}`;
-
+        const formattedSubtotal = `RM ${subtotal.toFixed(2)}`;
+        const formattedDiscount = `RM ${discount.toFixed(2)}`;
+        const formattedTotal = `RM ${total.toFixed(2)}`;
+        const currentDate = new Date();
     
         // Set order details in the 'orders' collection using the generated order ID
         set(ref(db, `users/${userId}/orders/${orderId}`), {
+            date: currentDate.valueOf(),
+            menu: menuInCart,
             subtotal: formattedSubtotal,
             discount: formattedDiscount,
             total: formattedTotal

@@ -38,7 +38,7 @@
             return;
         }
 
-        const { total, subtotal, menuInCart, discount } = calcSubtotal();
+        const { total, subtotal, menuInCart, discount, countInCart } = calcSubtotal();
 
         if (menuInCart == 0) {
             alert("Please add item to cart");
@@ -63,7 +63,8 @@
             menu: menuInCart,
             subtotal: formattedSubtotal,
             discount: formattedDiscount,
-            total: formattedTotal
+            total: formattedTotal,
+            count: countInCart
         })
         .then(() => {
             alert("Checkout Successful!");

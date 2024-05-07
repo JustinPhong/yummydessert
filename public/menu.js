@@ -162,7 +162,7 @@ export function calcSubtotal() {
     var discount = 0;
     var total = 0;
     const menuInCart = [];
-
+    const countInCart = [];
     if (cartItems.length===0){
         total = 0;
         discount = 0;
@@ -173,8 +173,11 @@ export function calcSubtotal() {
     // Loop through each cart item and calculate subtotal
     for (var i = 0; i < cartItems.length; i++) {
         var cartItem = cartItems[i];
+        var count = parseFloat(cartItem.querySelector('#cartcount').textContent);
         var selectedmenuid = parseFloat(cartItem.querySelector('#menuid').textContent);
         menuInCart.push(selectedmenuid);
+        countInCart.push(count);
+        console.log(countInCart)
         // Fetch price from Firebase based on selectedmenuid
         if (selectedmenuid > 10) {
             const dessertRef = ref(db, 'dessert/' + selectedmenuid);
@@ -182,7 +185,7 @@ export function calcSubtotal() {
                 const menuItem = snapshot.val();
                 if (menuItem) {
                     const { Price } = menuItem;
-                    subtotal += Price;
+                    subtotal += Price * count ;
                     total = subtotal - discount;
                     updateSubtotalAndTotal(subtotal, total);
                 }
@@ -193,13 +196,13 @@ export function calcSubtotal() {
                 const menuItem = snapshot.val();
                 if (menuItem) {
                     const { Price } = menuItem;
-                    subtotal += Price;
+                    subtotal += Price * count;
                     total = subtotal - discount;
                     updateSubtotalAndTotal(subtotal, total);
                 }
             });
         }
-    } return {total: total, subtotal: subtotal, menuInCart, discount:discount}
+    } return {total: total, subtotal: subtotal, menuInCart, discount:discount, countInCart}
 }
 
 function updateSubtotalAndTotal(subtotal, total) {

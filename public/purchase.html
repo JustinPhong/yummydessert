@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
         <script type="module" src="logout.js"></script>
+        <script type="module" src="purchase.js"></script>
     </header>
 
     <body style="overflow-x:scroll">
@@ -64,57 +65,14 @@
                     <a onclick="signout1()">
                         <div class="buttonbar">
                             <img src="image/logoutbutton.png?raw=true" class="buttonimg">
-                            <a class="leftbutton" onclick="signout1()">Logout</a>
+                            <a class="leftbutton" id="logout">Logout</a>
                         </div>
                     </a>
                 </div>
             </div>
             <div class="rightcon">
                 <a class="txt">My Purchase</a>
-                <div class="card" style="font-family:Inter">
-                    <div style="margin: 20px 30px;">
-                        <a style="font-weight:bold;">01Jan2024</a>
-                        <div style="display:flex;justify-content:space-between;margin:10px 0px 20px;" class="txtfont">
-                            <a>12:00 am</a>
-                            <div class="ref-container">
-                                <a>ref:<a>
-                                <a>002<a>
-                            </div>
-                        </div>
-                        <div style="display:flex;justify-content:space-between;">
-                            <img src="image/maindishes/1.JPG?raw=true" class="menuimage">
-                            <div style="display: flex;flex-direction:column;flex:1;margin-left:20px">
-                                <a class="txtfont">Curry Noodle</a>
-                                <div class="txtfont">
-                                    <a>x</a>
-                                    <a>1</a>
-                                </div>
-                            </div>
-                            <div class="txtfont">
-                                <a style="font-weight:bold">RM</a>
-                                <a style="font-weight:bold">6.00</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="calculate">
-                        <div style="flex-direction:column;" class="txtfont">
-                            <div class="line"></div>
-                            <div style="display: flex; justify-content: space-between;margin-bottom:20px">
-                                <a style="margin-right:40px">Subtotal</a>
-                                <a>RM 6.00</a>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;margin-bottom:20px">
-                                <a style="margin-right:40px">Discount</a>
-                                <a>RM 0.00</a>
-                            </div>
-                            <div class="line"></div>
-                            <div style="display: flex; justify-content: space-between;margin-bottom:20px">
-                                <a style="margin-right:40px">Total</a>
-                                <a>RM 6.00</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div id="card"></div>
             </div>
         </div>
 

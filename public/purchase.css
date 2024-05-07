@@ -249,6 +249,7 @@ a {
 .card {
     background-color: #F5F5F5;
     margin: 20px 20px;
+    font-family:Inter;
 }
 
 .ref-container {
@@ -280,5 +281,4 @@ a {
     margin-right: 30px;
     align-self: flex-end;
 }
-
 

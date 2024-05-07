@@ -37,14 +37,19 @@
             window.location.href="login.html";
             return;
         }
+
+        const { total, subtotal, menuInCart, discount } = calcSubtotal();
+
+        if (menuInCart == 0) {
+            alert("Please add item to cart");
+            return;
+        }
+
         const userId = user.uid;
 
 
         // Generate a unique order ID
         const orderId = generateOrderId();
-    
-        // Get order details from input fields
-        const { total, subtotal, menuInCart, discount } = calcSubtotal();
     
         // Format values with "RM" prefix before storing in the database
         const formattedSubtotal = `RM ${subtotal.toFixed(2)}`;

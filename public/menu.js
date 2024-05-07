@@ -101,7 +101,6 @@
     });
 
 // Function to handle menu item click
-// Function to handle menu item click
 function handleMenuItemClick(name, price, image, key) {
     var x = document.getElementsByClassName("orderinterface")[0]; 
     x.style.display = "flex";

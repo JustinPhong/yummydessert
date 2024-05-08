@@ -46,7 +46,7 @@ if (user){
 
         }
     })}else {
-        document.getElementById("accname").textContent = "Login first to get rewards!"
+        document.getElementById("accname").textContent = "Login first to get your rewards!"
         const ptstxt = document.getElementById("accpts")
         ptstxt.style.color = "#2E77E5"
         ptstxt.style.fontWeight = "normal";
@@ -60,60 +60,84 @@ if (user){
     
     const menuRef = ref(db, 'rewards');
 
-    // Function to render menu items
-    onValue(menuRef, (snapshot) => {
-        const menuItems = snapshot.val();
-    
-        const menuContainer = document.querySelector('.menu');
-        const menuContainer1 = document.querySelector('.menu1');
-        menuContainer.innerHTML = ''; // Clear previous content
-        menuContainer1.innerHTML = ''; // Clear previous content
-    
-        for (let key in menuItems) {
-            const menuItem = menuItems[key];
-        
-            // Extract item details (Name, Price, Image, Description) from the menuItem object
-            const { name, price, image, des } = menuItem;
-        
-            // Create menu item element
+// Function to render menu items
+onValue(menuRef, (snapshot) => {
+    const menuItems = snapshot.val();
+    const menuContainer = document.querySelector('.menu');
+    const menuContainer1 = document.querySelector('.menu1');
+    menuContainer.innerHTML = ''; // Clear previous content
+    menuContainer1.innerHTML = ''; // Clear previous content
+
+    for (let key in menuItems) {
+        const menuItem = menuItems[key];
+        const { name, price, image, des } = menuItem;
+
+        if (key > 200) {
+            // Create menu item element for key > 200
             const menuItemElement = document.createElement('div');
-            const menuItemElement1 = document.createElement('div');
             menuItemElement.classList.add('menuframe');
-            menuItemElement1.classList.add('menuframe');
-        
-            if (key > 200) {
-                // Set content for the menu item if key > 200
-                menuItemElement.innerHTML = `
-                    <img src="${image}" class="menuimage">
-                    <a class="menuname">${name}</a>
-                    <a class="menuprice">${price}pts</a>
-                    <div style="display:none" id="menu">${key}</div>
-                    </div>
-                `;
-                // Append menu item to menuContainer (for key > 200)
-                menuContainer.appendChild(menuItemElement);
-            } else {
-                // Set content for the menu item if key <= 200
-                const menuItemElement1 = document.createElement('div');
-                menuItemElement.classList.add('menuframe');
-                menuItemElement.innerHTML = `
-                    <img src="${image}" class="menuimage">
-                    <a class="menuname">${name}</a>
-                    <a class="menuprice">${price}pts</a>
-                    <a class="des">${des}</a>
-                    <div style="display:none" id="menu">${key}</div>
-                    </div>
-                `;
-                menuContainer1.appendChild(menuItemElement);
-            }
-        
-            // Attach click event listener to handle item selection
-            menuItemElement.addEventListener('click', () => {
-                handleMenuItemClick(name, price, image, key);
+            menuItemElement.innerHTML = `
+                <div style="display:none" id="menuid">${key}</div>
+                <img src="${image}" class="menuimage">
+                <a class="menuname">${name}</a>
+                <a class="menuprice">${price}pts</a>
+            `;
+            // Check user's points and apply grayscale filter if insufficient
+            auth.onAuthStateChanged(function(user) {
+                if (user) {
+                    const userRef = ref(db, `users/${user.uid}/gameData`);
+                    onValue(userRef, (snapshot) => {
+                        const userData = snapshot.val();
+                        const pts = userData ? userData.score || 0 : 0;
+                        if (pts < price) {
+                            menuItemElement.style.filter = "grayscale(1)";
+                            menuItemElement.addEventListener('click', () => {
+                                window.alert("You have insufficient points to purchase this item.");
+                            });
+                        } else {
+                            menuItemElement.addEventListener('click', () => {
+                                handleMenuItemClick(name, price, image, key);
+                            });
+                        }
+                    });
+                }
             });
-            
+            menuContainer.appendChild(menuItemElement);
+        } else {
+            // Create menu item element for key <= 200
+            const menuItemElement1 = document.createElement('div');
+            menuItemElement1.classList.add('menuframe');
+            menuItemElement1.innerHTML = `
+                <div style="display:none" id="menuid">${key}</div>
+                <img src="${image}" class="menuimage">
+                <a class="menuname">${name}</a>
+                <a class="menuprice">${price}pts</a>
+                <a class="des">${des}</a>
+            `;
+            auth.onAuthStateChanged(function(user) {
+                if (user) {
+                    const userRef = ref(db, `users/${user.uid}/gameData`);
+                    onValue(userRef, (snapshot) => {
+                        const userData = snapshot.val();
+                        const pts = userData ? userData.score || 0 : 0;
+                        if (pts < price) {
+                            menuItemElement1.style.filter = "grayscale(1)";
+                            menuItemElement1.addEventListener('click', () => {
+                                window.alert("You have insufficient points to purchase this item.");
+                            });
+                        } else {
+                            menuItemElement1.addEventListener('click', () => {
+                                handleMenuItemClick(name, price, image, key);
+                            });
+                        }
+                    });
+                }
+            });
+            menuContainer1.appendChild(menuItemElement1);
         }
-    });
+    }
+});
+
     
 
 
@@ -129,46 +153,11 @@ selectedimage.src = image;
 selectedname.textContent = name;
 selectedprice.textContent = price+"pts";
 selectedkey.textContent = key;
-}
-
-// Function to add item to cart
 document.getElementById("addtocart").addEventListener("click", () => {
-var countElement = document.getElementById("count");
-var count = parseInt(countElement.textContent);
 
-var key = document.getElementById("menu").textContent;
-var name = document.getElementById("name").textContent;
-var priceText = document.getElementById("price").textContent;
-var price = parseFloat(priceText.replace(/[^\d.]/g, '')); // Extract numerical value from price text
-var imgSrc = document.getElementById("image").src;
-
-// Calculate the total price based on the count and item price
-var totalPrice = price * count;
-
-// Create a new cart item element
-var newCart = document.createElement("div");
-newCart.className = 'cart';
-newCart.innerHTML = `
-    <div style="display:none" id="menuid">${key}</div>
-    <img src="${imgSrc}" class="ordermenuimage" id="cartimage">
-    <div style="display:flex;flex-direction:column;flex:1;margin-left:20px;">
-        <a style="font-weight:bold;" id="cartname">${name}</a>
-        <div>
-            <span>x</span><span id="cartcount">${count}</span>
-        </div>
-        <a style="color:#e03e49;font-size:10px;margin-top:5px;cursor:pointer" id="remove">remove</a>
-    </div>
-    <a id="cartprice">${totalPrice.toFixed(2)}</a>
-`;
-
-// Append the new cart item to the cart container
-var cartContainer = document.getElementById('cartContainer');
-cartContainer.appendChild(newCart);
-
-// Close the interface after adding the item to the cart
-closeinterface();
-
-// Calculate subtotal after adding item to cart
-calcSubtotal();
-});
+    closeinterface();
+    calcSubtotal();
+    });
+    
+}
 

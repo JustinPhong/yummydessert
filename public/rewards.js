@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+import { getDatabase, ref, onValue, get, set } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
 
@@ -32,7 +32,6 @@ if (user){
             // Update input fields with user data
             const username = userData.username || '';
             document.getElementById("accname").textContent = username
-            console.log(username)
             const gameRef = ref(db, `users/${user.uid}/gameData`); 
             onValue(gameRef, (snapshot)=>{
                 const gameData = snapshot.val();
@@ -96,7 +95,7 @@ onValue(menuRef, (snapshot) => {
                             });
                         } else {
                             menuItemElement.addEventListener('click', () => {
-                                handleMenuItemClick(name, price, image, key);
+                                handleMenuItemClick(name, price, image, key, pts);
                             });
                         }
                     });
@@ -127,7 +126,7 @@ onValue(menuRef, (snapshot) => {
                             });
                         } else {
                             menuItemElement1.addEventListener('click', () => {
-                                handleMenuItemClick(name, price, image, key);
+                                handleMenuItemClick(name, price, image, key, pts);
                             });
                         }
                     });
@@ -138,26 +137,46 @@ onValue(menuRef, (snapshot) => {
     }
 });
 
-    
-
-
 // Function to handle menu item click
-function handleMenuItemClick(name, price, image, key) {
-var x = document.getElementsByClassName("orderinterface")[0]; 
-x.style.display = "flex";
-var selectedname = document.getElementById("name");
-var selectedprice = document.getElementById("price");
-var selectedimage = document.getElementById("image");
-var selectedkey = document.getElementById("menu");
-selectedimage.src = image;
-selectedname.textContent = name;
-selectedprice.textContent = price+"pts";
-selectedkey.textContent = key;
-document.getElementById("addtocart").addEventListener("click", () => {
+function handleMenuItemClick(name, price, image, key, pts) {
+    // Display the order interface with selected menu item details
+    var orderInterface = document.querySelector('.orderinterface');
+    orderInterface.style.display = "flex";
 
-    closeinterface();
-    calcSubtotal();
+    var selectedName = document.getElementById("name");
+    var selectedPrice = document.getElementById("price");
+    var selectedImage = document.getElementById("image");
+    var selectedKey = document.getElementById("menu");
+
+    selectedName.textContent = name;
+    selectedPrice.textContent = price + "pts";
+    selectedImage.src = image;
+    selectedKey.textContent = key;
+
+    // Add event listener to "Add to Cart" button
+    document.getElementById("addtocart").addEventListener("click", () => {
+        const newPts = pts - price;
+        auth.onAuthStateChanged(function(user) {
+            if (user) {
+                const userRef = ref(db, `users/${user.uid}/gameData`);
+                get(userRef).then((snapshot) => {
+                    const userData = snapshot.val();
+                    const updatedGameData = { ...userData, score: newPts };
+                    set(userRef, updatedGameData);
+                    closeInterface();
+                })
+            }
+            })
     });
-    
 }
+
+function closeInterface() {
+    // Hide the order interface
+    var orderInterface = document.querySelector('.orderinterface');
+    orderInterface.style.display = "none";
+}
+
+    
+
+
 

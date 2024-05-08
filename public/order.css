@@ -490,3 +490,16 @@ a {
     justify-content:space-between;
     font-family:'Inter'
 }
+
+.promotionimg {
+    width: 1.5cm;
+    height: 1.5cm;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.promotioncenter {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}

@@ -38,7 +38,7 @@
             return;
         }
 
-        const { total, subtotal, menuInCart, discount, countInCart } = calcSubtotal();
+        const { total, subtotal, menuInCart, countInCart, discountsum } = calcSubtotal();
 
         if (menuInCart == 0) {
             alert("Please add item to cart");
@@ -53,7 +53,7 @@
     
         // Format values with "RM" prefix before storing in the database
         const formattedSubtotal = `RM ${subtotal.toFixed(2)}`;
-        const formattedDiscount = `RM ${discount.toFixed(2)}`;
+        const formattedDiscount = `RM ${discountsum.toFixed(2)}`;
         const formattedTotal = `RM ${total.toFixed(2)}`;
         const currentDate = new Date();
     
@@ -65,9 +65,12 @@
             discount: formattedDiscount,
             total: formattedTotal,
             count: countInCart
-        })
+        }).then(()=> {
+            set(ref(db, `users/${userId}/selectedReward`), {
+        })})
         .then(() => {
             alert("Checkout Successful!");
+            window.location.href="purchase.html";
         })
         .catch((error) => {
             console.error("Error writing order details: ", error);

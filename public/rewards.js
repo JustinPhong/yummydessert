@@ -155,23 +155,34 @@ function handleMenuItemClick(name, price, image, key, pts) {
 
     // Add event listener to "Add to Cart" button
     document.getElementById("addtocart").addEventListener("click", () => {
-        const newPts = pts - price;
-        auth.onAuthStateChanged(function(user) {
+        const user = auth.currentUser
             if (user) {
-                const userRef = ref(db, `users/${user.uid}/gameData`);
-                get(userRef).then((snapshot) => {
-                    const userData = snapshot.val();
-                    const updatedGameData = { ...userData, score: newPts };
-                    set(userRef, updatedGameData);
-                    closeInterface();
+                const selectedReward = ref(db, `users/${user.uid}/selectedReward`)
+                onValue(selectedReward, (snapshot) =>{
+                    const selectedReward1 = snapshot.val();
+                    if (!selectedReward1) {
+                        const newPts = pts - price;
+                        const userRef = ref(db, `users/${user.uid}/gameData`);
+                        get(userRef).then((snapshot) => {
+                            const userData = snapshot.val();
+                            const updatedGameData = { ...userData, score: newPts };
+                            set(userRef, updatedGameData);
+                            closeInterface();
+                        }).then(()=>{
+                            set(ref(db, `users/${user.uid}/selectedReward`), {
+                                id:key
+                        })
+                        })
+                    } else {
+                        window.alert("You only can redeem one reward per time")
+                    }
                 })
+                
             }
             })
-    });
-}
+    }
 
 function closeInterface() {
-    // Hide the order interface
     var orderInterface = document.querySelector('.orderinterface');
     orderInterface.style.display = "none";
 }

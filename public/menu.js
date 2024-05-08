@@ -1,6 +1,7 @@
     // Import the necessary Firebase SDK modules
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+    import { getDatabase, ref, onValue,get } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
 
     // Your web app's Firebase configuration
@@ -19,10 +20,62 @@
 
     // Get a reference to the Firebase Realtime Database
     const db = getDatabase(app);
+    const auth = getAuth();
+    var discount1;
+    var discountsum;
+
+    auth.onAuthStateChanged(function(user) {
+        if (user) {
+            const rewardRef = ref(db, `users/${user.uid}/selectedReward`);
+            onValue(rewardRef, (snapshot) => {
+                const rewardId = snapshot.val();
+                if (rewardId) {
+                    const idreward = rewardId.id;
+                    const rewardRef1 = ref(db, `rewards/${idreward}`);                    
+                    // Fetch reward details based on the selected reward ID
+                    onValue(rewardRef1, (snapshot) => {
+                        const rewardMenu = snapshot.val();
+                        const rewardcontainer = document.getElementById("promotion");
+                        rewardcontainer.innerHTML = ''; // Clear previous content
     
-    // Reference to the 'Menu' node in Firebase
+                        if (rewardMenu) {
+                                const image = rewardMenu.image;     
+                                const name = rewardMenu.name;
+                                const price = rewardMenu.price;                           
+                           
+
+                                // Create and append reward element to the container
+                                const rewardElement = document.createElement('div');
+                                rewardElement.className="promotioncenter"
+                                rewardElement.innerHTML = `
+                                    <img src="${image}" class="promotionimg">
+                                    <div style="display:flex;flex-direction:column">
+                                    <a style="margin-left:10px">${name}</a>
+                                    <a style="margin-left:10px;font-size:12px">${price}pts</a>
+                                    </div>
+                                    </div>
+                                `;
+
+                                if(name==="30%"){
+                                    discount1 = 30
+                                    calcSubtotal()
+                                } else {
+                                    discount1 = 0
+                                    calcSubtotal()
+                                }
+                                rewardcontainer.appendChild(rewardElement);
+                            
+                        }
+                    });
+                } 
+            });
+        }
+    });
+    
+    
+    
     const menuRef = ref(db, 'Menu');
-    
+
     // Function to render menu items
     onValue(menuRef, (snapshot) => {
         const menuItems = snapshot.val();
@@ -159,15 +212,16 @@ document.getElementById("addtocart").addEventListener("click", () => {
 export function calcSubtotal() {
     var cartItems = document.getElementsByClassName('cart');
     var subtotal = 0;
-    var discount = 0;
     var total = 0;
+    var discount = discount1;
     const menuInCart = [];
     const countInCart = [];
     if (cartItems.length===0){
         total = 0;
         discount = 0;
         subtotal = 0;
-        updateSubtotalAndTotal(subtotal, total);
+        discountsum= 0;
+        updateSubtotalAndTotal(subtotal, total, discountsum);
         menuInCart.length = 0;
     }
     // Loop through each cart item and calculate subtotal
@@ -177,39 +231,49 @@ export function calcSubtotal() {
         var selectedmenuid = parseFloat(cartItem.querySelector('#menuid').textContent);
         menuInCart.push(selectedmenuid);
         countInCart.push(count);
-        console.log(countInCart)
         // Fetch price from Firebase based on selectedmenuid
-        if (selectedmenuid > 10) {
+        if (selectedmenuid > 10 && selectedmenuid < 100) {
             const dessertRef = ref(db, 'dessert/' + selectedmenuid);
             onValue(dessertRef, (snapshot) => {
                 const menuItem = snapshot.val();
                 if (menuItem) {
                     const { Price } = menuItem;
                     subtotal += Price * count ;
-                    total = subtotal - discount;
-                    updateSubtotalAndTotal(subtotal, total);
+                    if (!discount){
+                        discountsum = 0
+                    } else {
+                        discountsum = (subtotal * discount)/100
+                    }
+                    total = subtotal - discountsum;
+                    updateSubtotalAndTotal(subtotal, total, discountsum);
                 }
             });
-        } else {
+        } else if (selectedmenuid < 10){
             const dessertRef = ref(db, 'Menu/0' + selectedmenuid);
             onValue(dessertRef, (snapshot) => {
                 const menuItem = snapshot.val();
                 if (menuItem) {
                     const { Price } = menuItem;
-                    subtotal += Price * count;
-                    total = subtotal - discount;
-                    updateSubtotalAndTotal(subtotal, total);
+                    subtotal += Price * count ;
+                    if (!discount){
+                        discountsum = 0
+                    } else {
+                        discountsum = (subtotal * discount)/100
+                    }                    
+                    total = subtotal - discountsum;
+                    updateSubtotalAndTotal(subtotal, total, discountsum);
                 }
             });
-        }
-    } return {total: total, subtotal: subtotal, menuInCart, discount:discount, countInCart}
+        }} return {total: total, subtotal: subtotal, menuInCart, discountsum:discountsum, countInCart}
 }
 
-function updateSubtotalAndTotal(subtotal, total) {
+function updateSubtotalAndTotal(subtotal, total, discountsum) {
     var subtotalElement = document.querySelector('.subtotal a:last-child');
     subtotalElement.textContent = 'RM ' + subtotal.toFixed(2);
     var totalElement = document.querySelector('.subtotal1 a:last-child');
     totalElement.textContent = 'RM ' + total.toFixed(2);
+    var discountElement = document.getElementById('discountvalue');
+    discountElement.textContent = 'RM ' + discountsum.toFixed(2);
 }
 
 // Delegate event to handle remove button clicks
@@ -222,3 +286,5 @@ document.addEventListener('click', function(event) {
         }
     }
 });
+
+

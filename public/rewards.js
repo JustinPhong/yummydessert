@@ -168,15 +168,21 @@ function handleMenuItemClick(name, price, image, key, pts) {
                             const updatedGameData = { ...userData, score: newPts };
                             set(userRef, updatedGameData);
                             closeInterface();
-                        }).then(()=>{
+                        }, {
+                            onlyOnce: true
+                          }).then(()=>{
                             set(ref(db, `users/${user.uid}/selectedReward`), {
                                 id:key
                         })
+                        }).then(()=>{
+                            window.location.href="order.html"
                         })
                     } else {
                         window.alert("You only can redeem one reward per time")
                     }
-                })
+                }, {
+                    onlyOnce: true
+                  })
                 
             }
             })

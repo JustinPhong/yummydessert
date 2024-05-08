@@ -21,6 +21,7 @@
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
     const auth = getAuth();
+    var rewardselected;
 
 
     // Generates a random string
@@ -56,6 +57,11 @@
         const formattedDiscount = `RM ${discountsum.toFixed(2)}`;
         const formattedTotal = `RM ${total.toFixed(2)}`;
         const currentDate = new Date();
+
+        const selectedref = ref(db, `users/${userId}/selectedReward`)
+        onValue(selectedref,(snapshot)=>{
+            rewardselected = snapshot.val();
+        })
     
         // Set order details in the 'orders' collection using the generated order ID
         set(ref(db, `users/${userId}/orders/${orderId}`), {
@@ -64,7 +70,8 @@
             subtotal: formattedSubtotal,
             discount: formattedDiscount,
             total: formattedTotal,
-            count: countInCart
+            count: countInCart,
+            rewardselected: rewardselected
         }).then(()=> {
             set(ref(db, `users/${userId}/selectedReward`), {
         })})

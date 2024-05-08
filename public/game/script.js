@@ -45,13 +45,17 @@ if (user){
     if (gameData){
       const lastplay = new Date(gameData.lastplay).toLocaleDateString() || '';
       const currentDate = new Date().toLocaleDateString();
-      if (lastplay === currentDate){
+      if (lastplay == currentDate){
           start.textContent="Try Again Tommorow!"
       } else {
         start.textContent="Press Any Key To Start"
       
       document.addEventListener("keydown", handleStart, { once: true })
       }
+    } else {
+      start.textContent="Press Any Key To Start"
+    
+    document.addEventListener("keydown", handleStart, { once: true })
     }
   }
   )

@@ -51,7 +51,7 @@
             return;
         }
 
-        window.location.href = "pay.html";
+        window.location.href = "payment.html";
         document.getElementById("pricetxt").textContent = formattedTotal;
 
     });

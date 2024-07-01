@@ -22,12 +22,19 @@ const auth = getAuth(app);
 document.getElementById("accountbtn").addEventListener("click", () => {
     const user = auth.currentUser;
         if (!user){
-            document.getElementById("accountbtn").textContent = "Login"
             window.location.href="login.html";
             return;
         } else {
-            document.getElementById("accountbtn").textContent = "Account"
             window.location.href = "account.html";
             return;
         }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const user = auth.currentUser;
+    if (!user){
+        document.getElementById("accountbtn").textContent = "Login"
+    } else {
+        document.getElementById("accountbtn").textContent = "Account"
+    }
+}, false);

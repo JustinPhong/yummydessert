@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <header>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="payment.css">
+        <title>Yummy Fresh Online</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Jomhuria&display=swap" rel="stylesheet">
+        <script src="order.js" type="module"></script>
+    </header>
+
+    <body>
+        <div style="display: flex;justify-content: center;padding-top: 10%;">
+            <div class="board">
+                <a style="font-family: 'Inter';font-size: 20px;font-weight: bold;">Payment methods</a>
+                <a id="pricetxt">RM123</a>
+                <form style="display: flex;flex-direction: row; margin-left: auto;margin-right:auto; padding-top: 20px;">
+                    <input type="radio" id="bankcard" name="paymentMethod" value="Bank Card" checked>
+                    <label style="margin-right:20px;" for="bankcard">Bank Card</label>
+                    <input type="radio" id="tng" name="paymentMethod" value="TNG">
+                    <label for="tng">TNG</label><br>
+                </form>
+                <div style="height: 7cm;">
+                <div class="inputb" id="hahaha" style="display: none;">
+                    <img src="./image/qr.png" style="height: 5cm;width: 5cm;margin: auto;">
+                </div>                
+                <div class="inputb" id="haha">
+                    <a style="text-align: left;">Email address*</a>
+                    <input readonly class="input" type="email" placeholder="Email address" style="margin-bottom: 10px;">
+                    <a style="text-align: left;">Card number</a>
+                    <input readonly class="input" placeholder="1234 1234 1234 1234" style="margin-bottom: 10px;">
+                    <div style="display: flex;flex-direction: row;justify-content: space-between;">
+                        <div style="display: flex;flex-direction: column;width: 50%;">
+                            <a style="text-align: left;">Expiration</a>
+                            <input readonly class="input" placeholder="MM / YY" style="margin-bottom: 10px;">
+                        </div>
+                        <div style="display: flex;flex-direction: column;">
+                            <a style="text-align: left;">CVC</a>
+                            <input readonly class="input" placeholder="CVC" style="margin-bottom: 10px;">
+                        </div>
+                    </div>
+                    <a style="text-align: left;">Country</a>
+                    <input readonly class="input" placeholder="Malaysia" style="margin-bottom: 10px;">
+                </div>
+                </div>
+                <button class="pay" id="pay">Pay</button>
+            </div>
+        </div>
+    </body>
+    <script>
+        document.getElementById("tng").addEventListener('click', function() {
+            document.getElementById("haha").style.display = "none";
+            document.getElementById("hahaha").style.display = "flex"
+        });
+        document.getElementById("bankcard").addEventListener('click', function() {
+            document.getElementById("haha").style.display = "flex";
+            document.getElementById("hahaha").style.display = "none"
+        });
+    </script>
+</html>

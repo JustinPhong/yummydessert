@@ -20,17 +20,13 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const user = auth.currentUser;
 
-if (!user) {
-    document.getElementById("accountbtn").textContent = "Login"
-} else {
-    document.getElementById("accountbtn").textContent = "Account"
-}
-
 document.getElementById("accountbtn").addEventListener("click", () => {
         if (!user){
+            document.getElementById("accountbtn").textContent = "Login"
             window.location.href="login.html";
             return;
         } else {
+            document.getElementById("accountbtn").textContent = "Account"
             window.location.href = "account.html";
             return;
         }

@@ -17,7 +17,6 @@
         <div style="display: flex;justify-content: center;padding-top: 10%;">
             <div class="board">
                 <a style="font-family: 'Inter';font-size: 20px;font-weight: bold;">Payment methods</a>
-                <a id="pricetxt">RM123</a>
                 <form style="display: flex;flex-direction: row; margin-left: auto;margin-right:auto; padding-top: 20px;">
                     <input type="radio" id="bankcard" name="paymentMethod" value="Bank Card" checked>
                     <label style="margin-right:20px;" for="bankcard">Bank Card</label>
@@ -60,5 +59,9 @@
             document.getElementById("haha").style.display = "flex";
             document.getElementById("hahaha").style.display = "none"
         });
+        document.getElementById("pay").addEventListener('click', function() {
+            alert("Payment successfully");
+            window.location.href = "index.html"
+        })
     </script>
 </html>

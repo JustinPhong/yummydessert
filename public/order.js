@@ -28,10 +28,9 @@
     function generateOrderId() {
         return Math.random().toString(36).substr(2, 9); 
     }
-
+    
     document.getElementById("checkout").addEventListener('click', function(e) {
         e.preventDefault();
-        
 
         const user = auth.currentUser;
         if (!user){
@@ -41,24 +40,11 @@
         }
 
         const { total, subtotal, menuInCart, countInCart, discountsum } = calcSubtotal();
-        const formattedSubtotal = `RM ${subtotal.toFixed(2)}`;
-        const formattedDiscount = `RM ${discountsum.toFixed(2)}`;
-        const formattedTotal = `RM ${total.toFixed(2)}`;
-        const currentDate = new Date();
 
         if (menuInCart == 0) {
             alert("Please add item to cart");
             return;
         }
-
-        window.location.href = "payment.html";
-        document.getElementById("pricetxt").textContent = formattedTotal;
-
-    });
-    
-    
-    document.getElementById("pay").addEventListener('click', function(e) {
-        e.preventDefault();
 
         const userId = user.uid;
 
@@ -66,6 +52,11 @@
         // Generate a unique order ID
         const orderId = generateOrderId();
     
+        // Format values with "RM" prefix before storing in the database
+        const formattedSubtotal = `RM ${subtotal.toFixed(2)}`;
+        const formattedDiscount = `RM ${discountsum.toFixed(2)}`;
+        const formattedTotal = `RM ${total.toFixed(2)}`;
+        const currentDate = new Date();
 
         const selectedref = ref(db, `users/${userId}/selectedReward`)
         onValue(selectedref,(snapshot)=>{
@@ -85,8 +76,7 @@
             set(ref(db, `users/${userId}/selectedReward`), {
         })})
         .then(() => {
-            alert("Checkout Successful!");
-            window.location.href="purchase.html";
+            window.location.href="payment.html";
         })
         .catch((error) => {
             console.error("Error writing order details: ", error);

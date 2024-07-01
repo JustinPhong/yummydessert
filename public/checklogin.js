@@ -18,9 +18,9 @@ measurementId: "G-HY8X68GH3R"
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const user = auth.currentUser;
 
 document.getElementById("accountbtn").addEventListener("click", () => {
+    const user = auth.currentUser;
         if (!user){
             document.getElementById("accountbtn").textContent = "Login"
             window.location.href="login.html";
